@@ -1,15 +1,53 @@
 site_name: My VDocs
+site_description: Mes doc pour m'aider
+site_author: LogoViktor59
+
 theme:
   name: material
+  language: fr
+  features:
+    - navigation.tabs
+    - navigation.top
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Basculer en mode sombre
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Basculer en mode clair
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+
 markdown_extensions:
   - codehilite
   - fenced_code
   - tables
+  - admonition
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - Accueil: index.md
   - Guide:
-      - DHCP : guide/Notice-DHCP.md
+      - DHCP: guide/Notice-DHCP.md
       - Installation: guide/installation.md
       - Configuration: guide/configuration.md
       - Utilisation: guide/utilisation.md
