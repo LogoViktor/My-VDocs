@@ -1,4 +1,4 @@
-# Notice : Configuration Serveur DHCP sous Debian
+# Configuration Serveur DHCP sous Debian
 
 ---
 ## Prérequis
