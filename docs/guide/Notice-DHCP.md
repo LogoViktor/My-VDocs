@@ -1,6 +1,3 @@
-Voici le code Markdown complet et optimisé pour votre fichier **`Notice-DHCP.md`**, compatible avec **MkDocs** et le thème **Material** :
-
-```markdown
 # Notice : Configuration Serveur DHCP sous Debian
 
 ---
@@ -151,6 +148,3 @@ sudo systemctl restart isc-dhcp-server
 
 ### 6. Tester la configuration
 - Démarrez les clients et vérifiez qu'ils obtiennent les adresses IP correctes via DHCP.
-```
-
----
