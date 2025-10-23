@@ -5,6 +5,7 @@ theme:
 nav:
   - Accueil: index.md
   - Guide:
+      - DHCP : guide/Notice-DHCP.md
       - Installation: guide/installation.md
       - Configuration: guide/configuration.md
       - Utilisation: guide/utilisation.md
