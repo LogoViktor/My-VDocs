@@ -1,6 +1,10 @@
 site_name: My VDocs
 theme:
   name: material
+markdown_extensions:
+  - codehilite
+  - fenced_code
+  - tables
 
 nav:
   - Accueil: index.md
