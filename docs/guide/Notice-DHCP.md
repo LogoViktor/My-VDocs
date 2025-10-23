@@ -1,6 +1,5 @@
 # Notice : Configuration Serveur DHCP sous Debian
 
-**Victor PAILLART - Valentin LAROUTE-DUHAMEL**
 
 ## Prérequis
 
