@@ -8,7 +8,7 @@ markdown_extensions:
 
 nav:
   - Accueil: index.md
-  - Guide:
+  - Notice :
       - DHCP : guide/Notice-DHCP.md
       - Installation: guide/installation.md
       - Configuration: guide/configuration.md
