@@ -1,0 +1,13 @@
+site_name: My VDocs
+theme:
+  name: material
+
+nav:
+  - Accueil: index.md
+  - Guide:
+      - Installation: guide/installation.md
+      - Configuration: guide/configuration.md
+      - Utilisation: guide/utilisation.md
+  - Ressources:
+      - FAQ: ressources/faq.md
+      - Contact: ressources/contact.md
