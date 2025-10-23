@@ -134,3 +134,12 @@
 
 6. **Test de la Configuration :**
     - Démarrage des clients : Démarrez les clients et vérifiez qu'ils obtiennent les adresses IP correctes via DHCP.
+
+
+<script type="text/javascript"
+
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax:
+
+{inlineMath: [['$', '$']]}, messageStyle: "none" });</script>
