@@ -15,8 +15,8 @@ nav:
       - NFS / SAMBA : 
           - NFS : Notice/NFS_SAMBA/nfs.md
           - SAMBA : Notice/NFS_SAMBA/samba.md
-      - Configuration: guide/configuration.md
-      - Utilisation: guide/utilisation.md
+      - APACHE : Notice/apache.md
+      - Proxy Squid : Notice/proxysquid.md
   - Ressources:
       - FAQ: ressources/faq.md
       - Contact: ressources/contact.md
