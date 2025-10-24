@@ -119,7 +119,11 @@ sudo systemctl restart smbd nmbd
 - Installez `cifs-utils` pour monter les partages :
   ```bash
   sudo apt install cifs-utils
+  ```
+  ```bash
   sudo mkdir -p /mnt/point_montage
+  ```
+  ```bash
   sudo mount -t cifs //ServeurGx/public /mnt/point_montage -o username=geralt,password=Geralt1
   ```
 
