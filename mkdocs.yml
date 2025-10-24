@@ -46,23 +46,19 @@ markdown_extensions:
 
 nav:
   - Accueil: index.md
-  - Notice:
-      - DHCP : material/network
+  - Notice :
+      - DHCP : 
           - Installation et config de base : Notice/DHCP/DHCP_base.md
           - Config VLAN : Notice/DHCP/DHCP_vlan.md
-      - NFS / SAMBA : material/folder-network
+      - NFS / SAMBA : 
           - NFS : Notice/NFS_SAMBA/nfs.md
           - SAMBA : Notice/NFS_SAMBA/samba.md
-      - APACHE : material/apache
-          - Apache : Notice/apache.md
-      - Proxy Squid : material/server-network
-          - Proxy Squid : Notice/proxysquid.md
-      - AD : material/microsoft
+      - APACHE : Notice/apache.md
+      - Proxy Squid : Notice/proxysquid.md
+      - AD :
           - Installation et config de base : Notice/Active Directory/AD_base.md
           - Users et Groupe : Notice/Active Directory/AD_users.md
           - GPO : Notice/Active Directory/AD_GPO.md
-  - Guide:
-      - Commande Switch/Routeur Cisco : material/cisco
-          - Commandes de base : Guide/commande_de_base_cisco.md
-      - Commande Switch Alcatel : material/router
-          - Commandes Alcatel : Guide/commandes_alcatel.md
+  - Guide :
+      - Commande Switch/Routeur Cisco : Guide/commande_de_base_cisco.md
+      - Commande Switch Alcatel : Guide/commandes_alcatel.md
