@@ -1,23 +1,39 @@
 site_name: My VDocs
+site_description: Documentation technique — DHCP, NFS, AD, Cisco, et plus
+site_author: Admin Réseau
 
 theme:
   name: material
   language: fr
+
+  # Polices claires et lisibles
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  # Fonctionnalités stables et utiles
   features:
+    # Navigation
     - navigation.instant
     - navigation.tracking
+    - navigation.top
+    - navigation.expand
+    - navigation.sections
+    # Recherche
+    - search.highlight
+    - search.suggest
+    # Contenu
     - content.code.copy
-    - content.action.edit
+    - toc.integrate
+
+  # Palette clair / sombre
   palette:
-    # Mode clair
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/weather-night
         name: Passer en mode sombre
-
-    # Mode sombre
     - scheme: slate
       primary: indigo
       accent: indigo
@@ -26,14 +42,11 @@ theme:
         name: Passer en mode clair
 
 markdown_extensions:
-  # Extensions de base
   - admonition
   - codehilite
   - fenced_code
   - footnotes
   - tables
-
-  # Extensions pymdownx
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
@@ -54,6 +67,13 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
+      lang:
+        - fr
+        - en
 
 nav:
   - Accueil: index.md
