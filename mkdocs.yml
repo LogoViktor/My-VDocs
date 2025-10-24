@@ -1,6 +1,22 @@
 site_name: My VDocs
 theme:
   name: material
+  palette:
+    # Palette pour le mode clair
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Passer en mode sombre
+    # Palette pour le mode sombre
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Passer en mode clair
+
 markdown_extensions:
   - codehilite
   - fenced_code
