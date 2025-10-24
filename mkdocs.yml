@@ -1,15 +1,23 @@
 site_name: My VDocs
+
 theme:
   name: material
+  language: fr
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - content.code.copy
+    - content.action.edit
   palette:
-    # Palette pour le mode clair
+    # Mode clair
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/weather-night
         name: Passer en mode sombre
-    # Palette pour le mode sombre
+
+    # Mode sombre
     - scheme: slate
       primary: indigo
       accent: indigo
@@ -18,11 +26,14 @@ theme:
         name: Passer en mode clair
 
 markdown_extensions:
+  # Extensions de base
+  - admonition
   - codehilite
   - fenced_code
-  - tables
-  - admonition
   - footnotes
+  - tables
+
+  # Extensions pymdownx
   - pymdownx.arithmatex
   - pymdownx.betterem:
       smart_enable: all
@@ -46,19 +57,19 @@ markdown_extensions:
 
 nav:
   - Accueil: index.md
-  - Notice :
-      - DHCP : 
-          - Installation et config de base : Notice/DHCP/DHCP_base.md
-          - Config VLAN : Notice/DHCP/DHCP_vlan.md
-      - NFS / SAMBA : 
-          - NFS : Notice/NFS_SAMBA/nfs.md
-          - SAMBA : Notice/NFS_SAMBA/samba.md
-      - APACHE : Notice/apache.md
-      - Proxy Squid : Notice/proxysquid.md
-      - AD :
-          - Installation et config de base : Notice/Active Directory/AD_base.md
-          - Users et Groupe : Notice/Active Directory/AD_users.md
-          - GPO : Notice/Active Directory/AD_GPO.md
-  - Guide :
-      - Commande Switch/Routeur Cisco : Guide/commande_de_base_cisco.md
-      - Commande Switch Alcatel : Guide/commandes_alcatel.md
+  - Notice:
+      - DHCP:
+          - Installation et configuration de base: Notice/DHCP/DHCP_base.md
+          - Configuration VLAN: Notice/DHCP/DHCP_vlan.md
+      - NFS / SAMBA:
+          - NFS: Notice/NFS_SAMBA/nfs.md
+          - SAMBA: Notice/NFS_SAMBA/samba.md
+      - Apache: Notice/apache.md
+      - Proxy Squid: Notice/proxysquid.md
+      - Active Directory:
+          - Installation et configuration de base: Notice/Active Directory/AD_base.md
+          - Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
+          - GPO: Notice/Active Directory/AD_GPO.md
+  - Guide:
+      - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
+      - Commandes Switch Alcatel: Guide/commandes_alcatel.md
