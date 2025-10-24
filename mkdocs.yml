@@ -2,9 +2,6 @@ site_name: My VDocs
 theme:
   name: material
   palette:
-    - scheme: default
-      primary: indigo
-      accent: light-blue
     # Palette pour le mode clair
     - scheme: default
       primary: indigo
