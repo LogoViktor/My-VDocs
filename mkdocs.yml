@@ -9,7 +9,9 @@ markdown_extensions:
 nav:
   - Accueil: index.md
   - Notice :
-      - DHCP : guide/Notice-DHCP.md
+      - DHCP : 
+          - Installation et config de base : Notice/DHCP/DHCP_base.md
+          - Config VLAN : Notice/DHCP/DHCP_vlan.md
       - Installation: guide/installation.md
       - Configuration: guide/configuration.md
       - Utilisation: guide/utilisation.md
