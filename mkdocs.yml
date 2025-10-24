@@ -1,4 +1,5 @@
 site_name: My VDocs
+
 theme:
   name: material
   palette:
@@ -45,20 +46,51 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Accueil: index.md
-  - Notice :
-      - DHCP : 
-          - Installation et config de base : Notice/DHCP/DHCP_base.md
-          - Config VLAN : Notice/DHCP/DHCP_vlan.md
-      - NFS / SAMBA : 
-          - NFS : Notice/NFS_SAMBA/nfs.md
-          - SAMBA : Notice/NFS_SAMBA/samba.md
-      - APACHE : Notice/apache.md
-      - Proxy Squid : Notice/proxysquid.md
-      - AD :
-          - Installation et config de base : Notice/Active Directory/AD_base.md
-          - Users et Groupe : Notice/Active Directory/AD_users.md
-          - GPO : Notice/Active Directory/AD_GPO.md
-  - Guide :
-      - Commande Switch/Routeur Cisco : Guide/commande_de_base_cisco.md
-      - Commande Switch Alcatel : Guide/commandes_alcatel.md
+  - Accueil: 
+      - icon: material/home
+        title: Accueil
+        path: index.md
+  - Notice:
+      - icon: material/book-open-page-variant
+        title: DHCP
+        children:
+          - icon: material/lan
+            title: Installation et config de base
+            path: Notice/DHCP/DHCP_base.md
+          - icon: material/lan-connect
+            title: Config VLAN
+            path: Notice/DHCP/DHCP_vlan.md
+      - icon: material/folder-network
+        title: NFS / SAMBA
+        children:
+          - icon: material/nfs
+            title: NFS
+            path: Notice/NFS_SAMBA/nfs.md
+          - icon: material/folder-multiple
+            title: SAMBA
+            path: Notice/NFS_SAMBA/samba.md
+      - icon: material/web
+        title: APACHE
+        path: Notice/apache.md
+      - icon: material/shield
+        title: Proxy Squid
+        path: Notice/proxysquid.md
+      - icon: material/domain
+        title: AD
+        children:
+          - icon: material/server
+            title: Installation et config de base
+            path: Notice/Active Directory/AD_base.md
+          - icon: material/account-multiple
+            title: Users et Groupe
+            path: Notice/Active Directory/AD_users.md
+          - icon: material/file-cog
+            title: GPO
+            path: Notice/Active Directory/AD_GPO.md
+  - Guide:
+      - icon: material/console
+        title: Commande Switch/Routeur Cisco
+        path: Guide/commande_de_base_cisco.md
+      - icon: material/switch
+        title: Commande Switch Alcatel
+        path: Guide/commandes_alcatel.md
