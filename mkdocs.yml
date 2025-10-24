@@ -18,9 +18,6 @@ nav:
       - APACHE : Notice/apache.md
       - Proxy Squid : Notice/proxysquid.md
       - AD :
-          - Installation et config de base : Notice/AD/AD_base.md
-          - Users et Groupe : Notice/AD/AD_users.md
-          - GPO : Notice/AD/AD_GPO.md
-  - Ressources:
-      - FAQ: ressources/faq.md
-      - Contact: ressources/contact.md
+          - Installation et config de base : Notice/Active Directory/AD_base.md
+          - Users et Groupe : Notice/Active Directory/AD_users.md
+          - GPO : Notice/Active Directory/AD_GPO.md

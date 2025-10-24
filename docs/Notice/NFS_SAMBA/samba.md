@@ -116,7 +116,7 @@ sudo systemctl restart smbd nmbd
 - Connectez-vous avec les identifiants des utilisateurs créés.
 
 ### 2. Depuis un poste Linux
-- Installez `cifs-utils` pour monter les partages :
+- Installez `cifs-utils` pour monter les partages :  
   ```bash  
   sudo apt install cifs-utils
   ```  
