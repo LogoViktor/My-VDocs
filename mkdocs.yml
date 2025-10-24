@@ -21,3 +21,5 @@ nav:
           - Installation et config de base : Notice/Active Directory/AD_base.md
           - Users et Groupe : Notice/Active Directory/AD_users.md
           - GPO : Notice/Active Directory/AD_GPO.md
+  - Guide :
+      - Commande de base Cisco : Guide/commande_de_base_cisco.md
