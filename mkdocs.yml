@@ -1,4 +1,5 @@
 site_name: My VDocs
+
 theme:
   name: material
   palette:
@@ -16,6 +17,10 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Passer en mode clair
+  features:
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
 
 markdown_extensions:
   - codehilite
@@ -45,20 +50,23 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Accueil: index.md
-  - Notice :
-      - DHCP : 
-          - Installation et config de base : Notice/DHCP/DHCP_base.md
-          - Config VLAN : Notice/DHCP/DHCP_vlan.md
-      - NFS / SAMBA : 
-          - NFS : Notice/NFS_SAMBA/nfs.md
-          - SAMBA : Notice/NFS_SAMBA/samba.md
-      - APACHE : Notice/apache.md
-      - Proxy Squid : Notice/proxysquid.md
-      - AD :
-          - Installation et config de base : Notice/Active Directory/AD_base.md
-          - Users et Groupe : Notice/Active Directory/AD_users.md
-          - GPO : Notice/Active Directory/AD_GPO.md
-  - Guide :
-      - Commande Switch/Routeur Cisco : Guide/commande_de_base_cisco.md
-      - Commande Switch Alcatel : Guide/commandes_alcatel.md
+  - Accueil: material/home
+    - index.md
+
+  - Notice: material/book-open-variant
+    - DHCP: material/network
+      - Installation et config de base: material/tools: Notice/DHCP/DHCP_base.md
+      - Config VLAN: material/vlan: Notice/DHCP/DHCP_vlan.md
+    - NFS / SAMBA: material/folder-network
+      - NFS: material/nas: Notice/NFS_SAMBA/nfs.md
+      - SAMBA: material/microsoft-windows: Notice/NFS_SAMBA/samba.md
+    - APACHE: material/apache: Notice/apache.md
+    - Proxy Squid: material/server-network: Notice/proxysquid.md
+    - AD: material/microsoft
+      - Installation et config de base: material/server-plus: Notice/Active Directory/AD_base.md
+      - Users et Groupe: material/account-group: Notice/Active Directory/AD_users.md
+      - GPO: material/tune: Notice/Active Directory/AD_GPO.md
+
+  - Guide: material/book-open-page-variant
+    - Commande Switch/Routeur Cisco: material/cisco: Guide/commande_de_base_cisco.md
+    - Commande Switch Alcatel: material/router: Guide/commandes_alcatel.md
