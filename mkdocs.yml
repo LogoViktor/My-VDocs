@@ -17,6 +17,10 @@ nav:
           - SAMBA : Notice/NFS_SAMBA/samba.md
       - APACHE : Notice/apache.md
       - Proxy Squid : Notice/proxysquid.md
+      - AD :
+          - Installation et config de base : Notice/AD/AD_base.md
+          - Users et Groupe : Notice/AD/AD_users.md
+          - GPO : Notice/AD/AD_GPO.md
   - Ressources:
       - FAQ: ressources/faq.md
       - Contact: ressources/contact.md
