@@ -1,20 +1,6 @@
 
 # Commandes Alcatel : Switchs (AOS6 et AOS8)
 
-## Table des matières
-1. [Gestion de la configuration](#gestion-de-la-configuration)
-2. [Gestion des VLANs](#gestion-des-vlans)
-3. [Gestion des ports](#gestion-des-ports)
-4. [Gestion des agrégations de liens (Linkagg)](#gestion-des-agrégations-de-liens-linkagg)
-5. [Gestion IP et routage](#gestion-ip-et-routage)
-6. [Gestion du Virtual Chassis (AOS8)](#gestion-du-virtual-chassis-aos8)
-7. [Gestion du PoE](#gestion-du-poe)
-8. [Gestion du Spanning Tree](#gestion-du-spanning-tree)
-9. [Gestion du SNMP](#gestion-du-snmp)
-10. [Commandes de dépannage](#commandes-de-dépannage)
-
----
-
 ## Gestion de la configuration
 
 | Commande | Description |
