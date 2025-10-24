@@ -22,4 +22,5 @@ nav:
           - Users et Groupe : Notice/Active Directory/AD_users.md
           - GPO : Notice/Active Directory/AD_GPO.md
   - Guide :
-      - Commande de base Cisco : Guide/commande_de_base_cisco.md
+      - Commande Switch/Routeur Cisco : Guide/commande_de_base_cisco.md
+      - Commande Switch Alcatel : Guide/commande_alcatel.md
