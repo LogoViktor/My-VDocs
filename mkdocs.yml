@@ -12,7 +12,9 @@ nav:
       - DHCP : 
           - Installation et config de base : Notice/DHCP/DHCP_base.md
           - Config VLAN : Notice/DHCP/DHCP_vlan.md
-      - Installation: guide/installation.md
+      - NFS / SAMBA : 
+          - NFS : Notice/NFS_SAMBA/nfs.md
+          - SAMBA : Notice/NFS_SAMBA/samba.md
       - Configuration: guide/configuration.md
       - Utilisation: guide/utilisation.md
   - Ressources:
