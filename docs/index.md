@@ -4,8 +4,13 @@ title: Accueil
 
 # 📚 Bienvenue sur **My VDocs**
 
+### *Documentation technique : réseaux et télécommunications*
+
+> Centralisez vos procédures, guides et configurations en un seul endroit.
+
 ---
 
+## 💡 **À propos**
 
 !!! info "Objectif du site"
     **My VDocs** est une plateforme où je partage la documentation que j’ai réalisée dans le cadre de mon **BUT Réseaux et Télécommunications**.
@@ -13,11 +18,7 @@ title: Accueil
 !!! tip "Astuce"
     Le site utilise le **mode sombre 🌙** par défaut. Vous pouvez basculer en **mode clair ☀️** via le bouton en haut à droite pour un meilleur confort visuel en journée.
 
-!!! note "Dernière mise à jour"
-    📅 Cette documentation a été mise à jour le **25 octobre 2025**.
-
 ---
 
-<div align="center">
-    <p><strong>© 2025 — My VDocs</strong></p>
-</div>
+!!! note "Dernière mise à jour"
+    📅 Cette documentation a été mise à jour le **25 octobre 2025**.
