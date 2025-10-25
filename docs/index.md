@@ -12,33 +12,42 @@ title: Accueil
 
 ## ⚙️ Catégories principales
 
-<div class="grid cards" markdown>
+!!! cards
+    - type: card
+      title: "DHCP"
+      icon: material-server-network
+      description: "Installation, configuration et gestion avancée des serveurs DHCP, avec intégration VLAN."
+      link: "Notice/DHCP/DHCP_base.md"
 
-- :material-server-network: **DHCP**  
-  Installation, configuration et gestion avancée des serveurs DHCP, avec intégration VLAN.  
-  [:octicons-arrow-right-24: Accéder](Notice/DHCP/DHCP_base.md)
+    - type: card
+      title: "NFS / SAMBA"
+      icon: material-folder-network
+      description: "Mise en place de partages réseau performants et sécurisés sous Linux et Windows."
+      link: "Notice/NFS_SAMBA/nfs.md"
 
-- :material-folder-network: **NFS / SAMBA**  
-  Mise en place de partages réseau performants et sécurisés sous Linux et Windows.  
-  [:octicons-arrow-right-24: Accéder](Notice/NFS_SAMBA/nfs.md)
+    - type: card
+      title: "Serveur Apache"
+      icon: material-web
+      description: "Déploiement et sécurisation d’un serveur web Apache pour vos environnements internes."
+      link: "Notice/apache.md"
 
-- :material-web: **Serveur Apache**  
-  Déploiement et sécurisation d’un serveur web Apache pour vos environnements internes.  
-  [:octicons-arrow-right-24: Accéder](Notice/apache.md)
+    - type: card
+      title: "Proxy Squid"
+      icon: material-proxy
+      description: "Configuration et filtrage de trafic web via un proxy Squid professionnel."
+      link: "Notice/proxysquid.md"
 
-- :material-proxy: **Proxy Squid**  
-  Configuration et filtrage de trafic web via un proxy Squid professionnel.  
-  [:octicons-arrow-right-24: Accéder](Notice/proxysquid.md)
+    - type: card
+      title: "Active Directory"
+      icon: material-account-group
+      description: "Gestion complète des utilisateurs, GPO et stratégies d’entreprise sous Windows Server."
+      link: "Notice/Active Directory/AD_base.md"
 
-- :material-account-group: **Active Directory**  
-  Gestion complète des utilisateurs, GPO et stratégies d’entreprise sous Windows Server.  
-  [:octicons-arrow-right-24: Accéder](Notice/Active Directory/AD_base.md)
-
-- :material-console-line: **Commandes Réseau**  
-  Référentiel des commandes essentielles Cisco, Alcatel et plus encore.  
-  [:octicons-arrow-right-24: Accéder](Guide/commande_de_base_cisco.md)
-
-</div>
+    - type: card
+      title: "Commandes Réseau"
+      icon: material-console-line
+      description: "Référentiel des commandes essentielles Cisco, Alcatel et plus encore."
+      link: "Guide/commande_de_base_cisco.md"
 
 ---
 
@@ -56,41 +65,49 @@ title: Accueil
 
 ## 🧰 Technologies utilisées
 
-<div class="grid" markdown>
+!!! cards
+    - type: card
+      title: "Markdown"
+      icon: material-language-markdown
+      description: "Un format léger, lisible et portable pour écrire la documentation."
 
-- :material-language-markdown: **Markdown**  
-  Un format léger, lisible et portable pour écrire la documentation.
+    - type: card
+      title: "MkDocs"
+      icon: material-database-cog
+      description: "Générateur de site statique rapide, parfait pour la documentation technique."
 
-- :material-database-cog: **MkDocs**  
-  Générateur de site statique rapide, parfait pour la documentation technique.
+    - type: card
+      title: "Material for MkDocs"
+      icon: material-palette
+      description: "Thème responsive, moderne et entièrement personnalisable."
 
-- :material-palette: **Material for MkDocs**  
-  Thème responsive, moderne et entièrement personnalisable.
-
-- :material-code-tags-check: **PymdownX**  
-  Extensions Markdown pour des contenus interactifs (onglets, alertes, etc.).
-
-</div>
+    - type: card
+      title: "PymdownX"
+      icon: material-code-tags-check
+      description: "Extensions Markdown pour des contenus interactifs (onglets, alertes, etc.)."
 
 ---
 
 ## 🧠 Ressources utiles
 
-<div class="grid cards" markdown>
+!!! cards
+    - type: card
+      title: "Documentation MkDocs"
+      icon: material-book-multiple
+      description: "Référence officielle du générateur de documentation statique."
+      link: "https://www.mkdocs.org"
 
-- :material-book-multiple: **Documentation MkDocs**  
-  Référence officielle du générateur de documentation statique.  
-  [:material-open-in-new: Voir](https://www.mkdocs.org)
+    - type: card
+      title: "Thème Material"
+      icon: material-palette-outline
+      description: "Guide complet du thème Material for MkDocs et ses options."
+      link: "https://squidfunk.github.io/mkdocs-material/"
 
-- :material-palette-outline: **Thème Material**  
-  Guide complet du thème Material for MkDocs et ses options.  
-  [:material-open-in-new: Voir](https://squidfunk.github.io/mkdocs-material/)
-
-- :material-github: **Exemple de projet**  
-  Dépôt GitHub avec exemple de configuration MkDocs complète.  
-  [:material-open-in-new: Voir](https://github.com/mkdocs/mkdocs)
-
-</div>
+    - type: card
+      title: "Exemple de projet"
+      icon: material-github
+      description: "Dépôt GitHub avec exemple de configuration MkDocs complète."
+      link: "https://github.com/mkdocs/mkdocs"
 
 ---
 
