@@ -1,137 +1,143 @@
----
-title: Accueil
----
+site_name: My VDocs
+site_description: Documentation technique — DHCP, NFS, AD, Cisco, et plus
+site_author: Admin Réseau
 
-# 📚 Bienvenue sur **My VDocs**
+theme:
+name: material
+language: fr
 
-### _Documentation technique réseau & systèmes_
+Polices claires et lisibles
 
-> Centralisez vos procédures, guides et configurations en un seul endroit.
+font:
+text: Roboto
+code: "Fira Code"
 
----
+Fonctionnalités stables et utiles
 
-## ⚙️ Catégories principales
+features:
+# Navigation
+- navigation.instant
+- navigation.tracking
+- navigation.top
+- navigation.expand
+- navigation.sections
+# Recherche
+- search.highlight
+- search.suggest
+# Contenu
+- content.code.copy
+- toc.integrate
 
-::: cards
-- type: card
-  title: "DHCP"
-  icon: material-server-network
-  description: Installation, configuration et gestion avancée des serveurs DHCP, avec intégration VLAN.
-  link: Notice/DHCP/DHCP_base.md
-  color: teal
+Palette clair / sombre
 
-- type: card
-  title: "NFS / SAMBA"
-  icon: material-folder-network
-  description: Mise en place de partages réseau performants et sécurisés sous Linux et Windows.
-  link: Notice/NFS_SAMBA/nfs.md
-  color: cyan
+palette:
+- scheme: slate
+primary: indigo
+accent: indigo
+toggle:
+icon: material/weather-sunny
+name: Passer en mode sombre
+- scheme: default
+primary: indigo
+accent: indigo
+toggle:
+icon: material/weather-night
+name: Passer en mode clair
 
-- type: card
-  title: "Serveur Apache"
-  icon: material-web
-  description: Déploiement et sécurisation d’un serveur web Apache pour vos environnements internes.
-  link: Notice/apache.md
-  color: amber
+markdown_extensions:
 
-- type: card
-  title: "Proxy Squid"
-  icon: material-proxy
-  description: Configuration et filtrage de trafic web via un proxy Squid professionnel.
-  link: Notice/proxysquid.md
-  color: deep-orange
+admonition
 
-- type: card
-  title: "Active Directory"
-  icon: material-account-group
-  description: Gestion complète des utilisateurs, GPO et stratégies d’entreprise sous Windows Server.
-  link: Notice/Active Directory/AD_base.md
-  color: purple
+codehilite
 
-- type: card
-  title: "Commandes Réseau"
-  icon: material-console-line
-  description: Référentiel des commandes essentielles Cisco, Alcatel et plus encore.
-  link: Guide/commande_de_base_cisco.md
-  color: blue
-:::
+fenced_code
 
----
+footnotes
 
-## 💡 À propos
+tables
 
-!!! info "Objectif du site"
-    **My VDocs** est une plateforme de documentation interne destinée aux administrateurs réseau et systèmes.  
-    Elle regroupe l’ensemble des procédures et configurations utilisées en production.
+pymdownx.arithmatex
 
-!!! tip "Astuce"
-    Le site utilise le **mode sombre 🌙** par défaut.  
-    Passez en **mode clair ☀️** via le bouton en haut à droite pour un meilleur confort visuel en journée.
+pymdownx.betterem:
+smart_enable: all
 
----
+pymdownx.caret
 
-## 🧰 Technologies utilisées
+pymdownx.critic
 
-::: cards
-- type: card
-  title: "Markdown"
-  icon: material-language-markdown
-  description: Un format léger, lisible et portable pour écrire la documentation.
-  color: teal
+pymdownx.details
 
-- type: card
-  title: "MkDocs"
-  icon: material-database-cog
-  description: Générateur de site statique rapide, parfait pour la documentation technique.
-  color: cyan
+pymdownx.emoji:
+emoji_index: !!python/name:materialx.emoji.twemoji
+emoji_generator: !!python/name:materialx.emoji.to_svg
 
-- type: card
-  title: "Material for MkDocs"
-  icon: material-palette
-  description: Thème responsive, moderne et entièrement personnalisable.
-  color: amber
+pymdownx.highlight
 
-- type: card
-  title: "PymdownX"
-  icon: material-code-tags-check
-  description: Extensions Markdown pour des contenus interactifs (onglets, alertes, etc.).
-  color: deep-orange
-:::
+pymdownx.inlinehilite
 
----
+pymdownx.keys
 
-## 🧠 Ressources utiles
+pymdownx.magiclink
 
-::: cards
-- type: card
-  title: "Documentation MkDocs"
-  icon: material-book-multiple
-  description: Référence officielle du générateur de documentation statique.
-  link: https://www.mkdocs.org
-  color: teal
+pymdownx.mark
 
-- type: card
-  title: "Thème Material"
-  icon: material-palette-outline
-  description: Guide complet du thème Material for MkDocs et ses options.
-  link: https://squidfunk.github.io/mkdocs-material/
-  color: cyan
+pymdownx.smartsymbols
 
-- type: card
-  title: "Exemple de projet"
-  icon: material-github
-  description: Dépôt GitHub avec exemple de configuration MkDocs complète.
-  link: https://github.com/mkdocs/mkdocs
-  color: amber
-:::
+pymdownx.superfences
 
----
+pymdownx.tabbed
 
-!!! note "Dernière mise à jour"
-    📅 Cette documentation a été mise à jour le **25/10/2025**.
+pymdownx.tasklist:
+custom_checkbox: true
 
----
+pymdownx.tilde
 
-<div align="center">
-#### © 2025 — **My VDocs**
-</div>
+
+plugins:
+
+search:
+separator: '[\s-.]+'
+lang:
+- fr
+- en
+
+
+nav:
+
+Accueil: index.md
+
+Notice:
+
+DHCP:
+
+Installation et configuration de base: Notice/DHCP/DHCP_base.md
+
+Configuration VLAN: Notice/DHCP/DHCP_vlan.md
+
+
+NFS / SAMBA:
+
+NFS: Notice/NFS_SAMBA/nfs.md
+
+SAMBA: Notice/NFS_SAMBA/samba.md
+
+
+Apache: Notice/apache.md
+
+Proxy Squid: Notice/proxysquid.md
+
+Active Directory:
+
+Installation et configuration de base: Notice/Active Directory/AD_base.md
+
+Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
+
+GPO: Notice/Active Directory/AD_GPO.md
+
+
+
+Guide:
+
+Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
+
+Commandes Switch Alcatel: Guide/commandes_alcatel.md 
