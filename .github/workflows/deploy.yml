@@ -25,8 +25,10 @@ jobs:
         run: |
           pip install mkdocs
           pip install "mkdocs-material>=9.5.0"
-          pip install mkdocs-material-extensions
           pip install pymdown-extensions
 
-      - name: Deploy site
+      - name: Build site cleanly
+        run: mkdocs build --clean
+
+      - name: Deploy site to GitHub Pages
         run: mkdocs gh-deploy --force
