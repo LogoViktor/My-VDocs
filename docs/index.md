@@ -4,16 +4,9 @@ title: Accueil
 
 # 📚 Bienvenue sur **My VDocs**
 
-<div align="center">
-
-![Logo](https://cdn-icons-png.flaticon.com/512/3214/3214744.png){ width="100" }
-
 ### _Documentation technique réseau & systèmes_
+
 > Centralisez vos procédures, guides et configurations en un seul endroit.
-
-[:material-book-open-page-variant: **Commencer la lecture**](Notice/DHCP/DHCP_base.md){ .md-button .md-button--primary }
-
-</div>
 
 ---
 
@@ -68,7 +61,7 @@ title: Accueil
     Elle regroupe l’ensemble des procédures et configurations utilisées en production.
 
 !!! tip "Astuce"
-    Passez en **mode sombre 🌙** via le bouton en haut à droite pour un meilleur confort visuel.
+    Passez en **mode clair ☀️** via le bouton en haut à droite pour un meilleur confort visuel en journée.
 
 ---
 
@@ -123,11 +116,13 @@ title: Accueil
 ---
 
 !!! note "Dernière mise à jour"
-    📅 Cette documentation a été mise à jour le **{{ 25/10/2025 }}**.
+    📅 Cette documentation a été mise à jour le **25/10/2025**.
 
 ---
 
 <div align="center">
 
 #### © 2025 — **My VDocs**
+
+
 </div>
