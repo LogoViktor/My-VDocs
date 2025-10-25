@@ -32,13 +32,13 @@ theme:
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/weather-night
+        icon: material/weather-sunny
         name: Passer en mode sombre
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/weather-sunny
+        icon: material/weather-night
         name: Passer en mode clair
 
 markdown_extensions:
