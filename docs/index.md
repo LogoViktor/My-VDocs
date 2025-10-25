@@ -12,42 +12,48 @@ title: Accueil
 
 ## ⚙️ Catégories principales
 
-!!! cards
+!!! cards "grid"
     - type: card
       title: "DHCP"
       icon: material-server-network
       description: "Installation, configuration et gestion avancée des serveurs DHCP, avec intégration VLAN."
       link: "Notice/DHCP/DHCP_base.md"
+      color: teal
 
     - type: card
       title: "NFS / SAMBA"
       icon: material-folder-network
       description: "Mise en place de partages réseau performants et sécurisés sous Linux et Windows."
       link: "Notice/NFS_SAMBA/nfs.md"
+      color: cyan
 
     - type: card
       title: "Serveur Apache"
       icon: material-web
       description: "Déploiement et sécurisation d’un serveur web Apache pour vos environnements internes."
       link: "Notice/apache.md"
+      color: amber
 
     - type: card
       title: "Proxy Squid"
       icon: material-proxy
       description: "Configuration et filtrage de trafic web via un proxy Squid professionnel."
       link: "Notice/proxysquid.md"
+      color: deep-orange
 
     - type: card
       title: "Active Directory"
       icon: material-account-group
       description: "Gestion complète des utilisateurs, GPO et stratégies d’entreprise sous Windows Server."
       link: "Notice/Active Directory/AD_base.md"
+      color: purple
 
     - type: card
       title: "Commandes Réseau"
       icon: material-console-line
       description: "Référentiel des commandes essentielles Cisco, Alcatel et plus encore."
       link: "Guide/commande_de_base_cisco.md"
+      color: blue
 
 ---
 
@@ -65,49 +71,56 @@ title: Accueil
 
 ## 🧰 Technologies utilisées
 
-!!! cards
+!!! cards "grid"
     - type: card
       title: "Markdown"
       icon: material-language-markdown
       description: "Un format léger, lisible et portable pour écrire la documentation."
+      color: teal
 
     - type: card
       title: "MkDocs"
       icon: material-database-cog
       description: "Générateur de site statique rapide, parfait pour la documentation technique."
+      color: cyan
 
     - type: card
       title: "Material for MkDocs"
       icon: material-palette
       description: "Thème responsive, moderne et entièrement personnalisable."
+      color: amber
 
     - type: card
       title: "PymdownX"
       icon: material-code-tags-check
       description: "Extensions Markdown pour des contenus interactifs (onglets, alertes, etc.)."
+      color: deep-orange
 
 ---
 
 ## 🧠 Ressources utiles
 
-!!! cards
+!!! cards "grid"
     - type: card
       title: "Documentation MkDocs"
       icon: material-book-multiple
       description: "Référence officielle du générateur de documentation statique."
       link: "https://www.mkdocs.org"
+      color: teal
 
     - type: card
       title: "Thème Material"
       icon: material-palette-outline
       description: "Guide complet du thème Material for MkDocs et ses options."
       link: "https://squidfunk.github.io/mkdocs-material/"
+      color: cyan
 
     - type: card
       title: "Exemple de projet"
       icon: material-github
       description: "Dépôt GitHub avec exemple de configuration MkDocs complète."
       link: "https://github.com/mkdocs/mkdocs"
+      color: amber
 
 ---
 
