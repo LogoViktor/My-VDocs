@@ -16,6 +16,9 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Passer en mode sombre
+      cards:
+        background: "#e3f2fd"
+        hover: "#bbdefb"
     - media: "(prefers-color-scheme: dark)"
       scheme: default
       primary: indigo
@@ -23,20 +26,24 @@ theme:
       toggle:
         icon: material/weather-night
         name: Passer en mode clair
-
-features:
-  # Navigation
-  - navigation.instant
-  - navigation.tracking
-  - navigation.top
-  - navigation.expand
-  - navigation.sections
-  # Recherche
-  - search.highlight
-  - search.suggest
-  # Contenu
-  - content.code.copy
-  - toc.integrate
+      cards:
+        background: "#1e1e1e"
+        hover: "#333333"
+  features:
+    # Navigation
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.expand
+    - navigation.sections
+    # Recherche
+    - search.highlight
+    - search.suggest
+    # Contenu
+    - content.code.copy
+    - toc.integrate
+    # Cartes
+    - cards
 
 markdown_extensions:
   - admonition
