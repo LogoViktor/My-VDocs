@@ -41,6 +41,12 @@ theme:
     - toc.integrate
     # Cartes
     - cards
+  # Ajout du footer personnalisé
+  extra:
+    footer: |
+      <div class="footer-content">
+        <p>© 2025 — <a href="https://votre-site.com" title="My VDocs">My VDocs</a></p>
+      </div>
 
 markdown_extensions:
   - admonition
