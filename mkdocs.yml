@@ -6,12 +6,12 @@ theme:
   name: material
   language: fr
 
-  # Polices claires et lisibles
+  # Polices élégantes et modernes
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: "Inter"
+    code: "Fira Code"
 
-  # Fonctionnalités stables et utiles
+  # Fonctionnalités ergonomiques et graphiques
   features:
     # Navigation
     - navigation.instant
@@ -19,27 +19,37 @@ theme:
     - navigation.top
     - navigation.expand
     - navigation.sections
+    - navigation.footer
     # Recherche
     - search.highlight
     - search.suggest
     # Contenu
     - content.code.copy
+    - content.tabs.link
     - toc.integrate
 
-  # Palette clair / sombre
+  # Palette de couleurs personnalisée (clair/sombre)
   palette:
-    - scheme: default
+    # Mode clair
+    - scheme: slate
       primary: indigo
-      accent: indigo
+      accent: deep orange
       toggle:
         icon: material/weather-night
         name: Passer en mode sombre
-    - scheme: slate
+
+    # Mode sombre
+    - scheme: default
       primary: indigo
-      accent: indigo
+      accent: amber
       toggle:
         icon: material/weather-sunny
         name: Passer en mode clair
+
+  # Mise en page du contenu (plus aéré)
+  typography:
+    text_size: 17px
+    line_height: 1.7
 
 markdown_extensions:
   - admonition
@@ -93,3 +103,12 @@ nav:
   - Guide:
       - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
       - Commandes Switch Alcatel: Guide/commandes_alcatel.md
+
+extra:
+  # Couleur du bandeau du haut
+  primary: indigo
+  # Accentuation dans les boutons et liens
+  accent: deep orange
+  # Message de pied de page
+  copyright: >
+    © 2025 My VDocs — Documentation technique réseau et systèmes.
