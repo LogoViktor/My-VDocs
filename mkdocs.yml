@@ -28,13 +28,13 @@ theme:
 
   # Palette clair / sombre
   palette:
-    - scheme: default
+    - scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/weather-night
         name: Passer en mode sombre
-    - scheme: slate
+    - scheme: default
       primary: indigo
       accent: indigo
       toggle:
