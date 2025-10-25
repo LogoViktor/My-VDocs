@@ -26,9 +26,6 @@ theme:
       toggle:
         icon: material/weather-night
         name: Passer en mode clair
-      cards:
-        background: "#1e1e1e"
-        hover: "#333333"
   features:
     # Navigation
     - navigation.instant
