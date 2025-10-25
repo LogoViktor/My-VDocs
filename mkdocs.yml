@@ -8,6 +8,21 @@ theme:
   font:
     text: Roboto
     code: "Fira Code"
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Passer en mode sombre
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Passer en mode clair
 
 features:
   # Navigation
@@ -22,20 +37,6 @@ features:
   # Contenu
   - content.code.copy
   - toc.integrate
-
-palette:
-  - scheme: slate
-    primary: indigo
-    accent: indigo
-    toggle:
-      icon: material/weather-sunny
-      name: Passer en mode sombre
-  - scheme: default
-    primary: indigo
-    accent: indigo
-    toggle:
-      icon: material/weather-night
-      name: Passer en mode clair
 
 markdown_extensions:
   - admonition
