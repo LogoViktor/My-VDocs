@@ -10,36 +10,6 @@ title: Accueil
 
 ---
 
-### ⚙️ **Catégories principales**
-
-***
-**DHCP**
-Installation, configuration et gestion avancée des serveurs DHCP, avec intégration VLAN.
-→ [Lien](Notice/DHCP/DHCP_base.md)
-
-**NFS / SAMBA**
-Mise en place de partages réseau performants et sécurisés sous Linux et Windows.
-→ [Lien](Notice/NFS_SAMBA/nfs.md)
-
-**Serveur Apache**
-Déploiement et sécurisation d’un serveur web Apache pour vos environnements internes.
-→ [Lien](Notice/apache.md)
-
-**Proxy Squid**
-Configuration et filtrage de trafic web via un proxy Squid professionnel.
-→ [Lien](Notice/proxysquid.md)
-
-**Active Directory**
-Gestion complète des utilisateurs, GPO et stratégies d’entreprise sous Windows Server.
-→ [Lien](Notice/Active%20Directory/AD_base.md)
-
-**Commandes Réseau**
-Référentiel des commandes essentielles Cisco, Alcatel et plus encore.
-→ [Lien](Guide/commande_de_base_cisco.md)
-***
-
----
-
 ### 🧰 **Technologies utilisées**
 
 ***
