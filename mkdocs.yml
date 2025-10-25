@@ -41,12 +41,6 @@ theme:
     - toc.integrate
     # Cartes
     - cards
-  extra:
-    copyright: ""  # Supprime le texte "Made with Material for MkDocs"
-    footer: |
-      <div class="footer-content">
-        <p>© 2025 — <a href="#" title="My VDocs">My VDocs</a></p>
-      </div>
 
 markdown_extensions:
   - admonition
