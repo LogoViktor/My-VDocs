@@ -4,10 +4,6 @@ title: Accueil
 
 # 📚 Bienvenue sur **My VDocs**
 
-### *Documentation technique : réseaux et télécommunications*
-
-> Centralisez vos procédures, guides et configurations en un seul endroit.
-
 ---
 
 ## 💡 **À propos**
