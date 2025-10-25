@@ -3,141 +3,89 @@ site_description: Documentation technique — DHCP, NFS, AD, Cisco, et plus
 site_author: Admin Réseau
 
 theme:
-name: material
-language: fr
-
-Polices claires et lisibles
-
-font:
-text: Roboto
-code: "Fira Code"
-
-Fonctionnalités stables et utiles
+  name: material
+  language: fr
+  font:
+    text: Roboto
+    code: "Fira Code"
 
 features:
-# Navigation
-- navigation.instant
-- navigation.tracking
-- navigation.top
-- navigation.expand
-- navigation.sections
-# Recherche
-- search.highlight
-- search.suggest
-# Contenu
-- content.code.copy
-- toc.integrate
-
-Palette clair / sombre
+  # Navigation
+  - navigation.instant
+  - navigation.tracking
+  - navigation.top
+  - navigation.expand
+  - navigation.sections
+  # Recherche
+  - search.highlight
+  - search.suggest
+  # Contenu
+  - content.code.copy
+  - toc.integrate
 
 palette:
-- scheme: slate
-primary: indigo
-accent: indigo
-toggle:
-icon: material/weather-sunny
-name: Passer en mode sombre
-- scheme: default
-primary: indigo
-accent: indigo
-toggle:
-icon: material/weather-night
-name: Passer en mode clair
+  - scheme: slate
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/weather-sunny
+      name: Passer en mode sombre
+  - scheme: default
+    primary: indigo
+    accent: indigo
+    toggle:
+      icon: material/weather-night
+      name: Passer en mode clair
 
 markdown_extensions:
-
-admonition
-
-codehilite
-
-fenced_code
-
-footnotes
-
-tables
-
-pymdownx.arithmatex
-
-pymdownx.betterem:
-smart_enable: all
-
-pymdownx.caret
-
-pymdownx.critic
-
-pymdownx.details
-
-pymdownx.emoji:
-emoji_index: !!python/name:materialx.emoji.twemoji
-emoji_generator: !!python/name:materialx.emoji.to_svg
-
-pymdownx.highlight
-
-pymdownx.inlinehilite
-
-pymdownx.keys
-
-pymdownx.magiclink
-
-pymdownx.mark
-
-pymdownx.smartsymbols
-
-pymdownx.superfences
-
-pymdownx.tabbed
-
-pymdownx.tasklist:
-custom_checkbox: true
-
-pymdownx.tilde
-
+  - admonition
+  - codehilite
+  - fenced_code
+  - footnotes
+  - tables
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 plugins:
-
-search:
-separator: '[\s-.]+'
-lang:
-- fr
-- en
-
+  search:
+    separator: '[\s-.]+'
+    lang:
+      - fr
+      - en
 
 nav:
-
-Accueil: index.md
-
-Notice:
-
-DHCP:
-
-Installation et configuration de base: Notice/DHCP/DHCP_base.md
-
-Configuration VLAN: Notice/DHCP/DHCP_vlan.md
-
-
-NFS / SAMBA:
-
-NFS: Notice/NFS_SAMBA/nfs.md
-
-SAMBA: Notice/NFS_SAMBA/samba.md
-
-
-Apache: Notice/apache.md
-
-Proxy Squid: Notice/proxysquid.md
-
-Active Directory:
-
-Installation et configuration de base: Notice/Active Directory/AD_base.md
-
-Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
-
-GPO: Notice/Active Directory/AD_GPO.md
-
-
-
-Guide:
-
-Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
-
-Commandes Switch Alcatel: Guide/commandes_alcatel.md 
+  - Accueil: index.md
+  - Notice:
+      - DHCP:
+          - Installation et configuration de base: Notice/DHCP/DHCP_base.md
+          - Configuration VLAN: Notice/DHCP/DHCP_vlan.md
+      - NFS / SAMBA:
+          - NFS: Notice/NFS_SAMBA/nfs.md
+          - SAMBA: Notice/NFS_SAMBA/samba.md
+      - Apache: Notice/apache.md
+      - Proxy Squid: Notice/proxysquid.md
+      - Active Directory:
+          - Installation et configuration de base: Notice/Active Directory/AD_base.md
+          - Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
+          - GPO: Notice/Active Directory/AD_GPO.md
+  - Guide:
+      - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
+      - Commandes Switch Alcatel: Guide/commandes_alcatel.md
