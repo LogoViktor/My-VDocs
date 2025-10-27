@@ -1,4 +1,4 @@
-# My VDocs 📚
+# My-VDocs 📚
 
 **[Accéder à la documentation en ligne ](https://logoviktor.github.io/My-VDocs/)**
 
