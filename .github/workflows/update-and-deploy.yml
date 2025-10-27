@@ -1,0 +1,43 @@
+name: Deploy MkDocs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Déclenchement sur la branche principale
+
+permissions:
+  contents: write  # Nécessaire pour publier sur gh-pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Cloner le dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # utile si jamais tu veux récupérer l'historique complet
+
+      # 2️⃣ Configurer Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      # 3️⃣ Installer MkDocs et extensions
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install mkdocs
+          pip install "mkdocs-material>=9.5.0"
+          pip install pymdown-extensions
+          pip install mkdocs-git-revision-date-localized-plugin
+
+      # 4️⃣ Build du site
+      - name: Build site cleanly
+        run: mkdocs build --clean
+
+      # 5️⃣ Déploiement sur GitHub Pages
+      - name: Deploy site to GitHub Pages
+        run: mkdocs gh-deploy --force
