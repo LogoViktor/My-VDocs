@@ -13,28 +13,24 @@
       
       
       
-        <link rel="prev" href="../AD_base/">
-      
-      
-        <link rel="next" href="../AD_GPO/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Utilisateurs et Groupes - My VDocs</title>
+        <title>Énumération Active Directory avec Nmap et Outils SMB - My VDocs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creation-des-utilisateurs-groupes-et-ou-dans-active-directory" class="md-skip">
+        <a href="#enumeration-active-directory-avec-nmap-et-outils-smb" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../../.." title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
+    <a href="../.." title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Utilisateurs et Groupes
+              Énumération Active Directory avec Nmap et Outils SMB
             
           </span>
         </div>
@@ -222,7 +218,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
+    <a href="../.." title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -240,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -264,8 +260,6 @@
       
   
   
-    
-  
   
   
     
@@ -278,11 +272,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -303,7 +297,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -370,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DHCP/DHCP_base/" class="md-nav__link">
+      <a href="../../Notice/DHCP/DHCP_base/" class="md-nav__link">
         
   
   
@@ -398,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DHCP/DHCP_vlan/" class="md-nav__link">
+      <a href="../../Notice/DHCP/DHCP_vlan/" class="md-nav__link">
         
   
   
@@ -483,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSPF/ospf/" class="md-nav__link">
+      <a href="../../Notice/OSPF/ospf/" class="md-nav__link">
         
   
   
@@ -511,7 +505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSPF/ospfv3/" class="md-nav__link">
+      <a href="../../Notice/OSPF/ospfv3/" class="md-nav__link">
         
   
   
@@ -596,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../NFS_SAMBA/nfs/" class="md-nav__link">
+      <a href="../../Notice/NFS_SAMBA/nfs/" class="md-nav__link">
         
   
   
@@ -624,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../NFS_SAMBA/samba/" class="md-nav__link">
+      <a href="../../Notice/NFS_SAMBA/samba/" class="md-nav__link">
         
   
   
@@ -660,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../apache/" class="md-nav__link">
+      <a href="../../Notice/apache/" class="md-nav__link">
         
   
   
@@ -688,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../proxysquid/" class="md-nav__link">
+      <a href="../../Notice/proxysquid/" class="md-nav__link">
         
   
   
@@ -713,8 +707,6 @@
                 
   
   
-    
-  
   
   
     
@@ -724,11 +716,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
           <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
@@ -749,7 +741,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -767,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AD_base/" class="md-nav__link">
+      <a href="../../Notice/Active%20Directory/AD_base/" class="md-nav__link">
         
   
   
@@ -792,37 +784,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Utilisateurs et Groupes
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Notice/Active%20Directory/AD_users/" class="md-nav__link">
         
   
   
@@ -838,226 +803,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creation-des-utilisateurs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        👥 Création des Utilisateurs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="👥 Création des Utilisateurs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-ajouter-un-utilisateur" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Ajouter un utilisateur
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#types-et-etendues-des-groupes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        👥 Types et Étendues des Groupes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="👥 Types et Étendues des Groupes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-types-de-groupes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Types de groupes
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-etendues-des-groupes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Étendues des groupes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creation-et-configuration-des-groupes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        👥 Création et Configuration des Groupes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="👥 Création et Configuration des Groupes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-ajouter-un-groupe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Ajouter un groupe
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configurer-le-groupe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Configurer le groupe
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-ajouter-un-utilisateur-a-un-groupe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Ajouter un utilisateur à un groupe
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integration-dun-poste-au-domaine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🌐 Intégration d'un Poste au Domaine
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🌐 Intégration d&#39;un Poste au Domaine">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-parametrer-le-dns-du-poste" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Paramétrer le DNS du poste
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-rejoindre-le-domaine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Rejoindre le domaine
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-sauthentifier-avec-un-compte-administrateur" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. S'authentifier avec un compte administrateur
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-redemarrer-le-poste" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Redémarrer le poste
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-verifier-la-connexion-au-domaine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Vérifier la connexion au domaine
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes-supplementaires" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📌 Notes supplémentaires
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1070,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AD_GPO/" class="md-nav__link">
+      <a href="../../Notice/Active%20Directory/AD_GPO/" class="md-nav__link">
         
   
   
@@ -1165,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Guide/commande_de_base_cisco/" class="md-nav__link">
+      <a href="../../Guide/commande_de_base_cisco/" class="md-nav__link">
         
   
   
@@ -1193,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Guide/commandes_alcatel/" class="md-nav__link">
+      <a href="../../Guide/commandes_alcatel/" class="md-nav__link">
         
   
   
@@ -1221,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Guide/git_github/" class="md-nav__link">
+      <a href="../../Guide/git_github/" class="md-nav__link">
         
   
   
@@ -1266,115 +1011,124 @@
 
 
 
-<h1 id="creation-des-utilisateurs-groupes-et-ou-dans-active-directory">Création des Utilisateurs, Groupes et OU dans Active Directory</h1>
-<p>Ce guide vous explique comment créer des <strong>utilisateurs</strong>, des <strong>groupes</strong> et des <strong>Organizational Units (OU)</strong> dans <strong>Active Directory</strong>, ainsi que la procédure pour intégrer un poste au domaine.</p>
+<h1 id="enumeration-active-directory-avec-nmap-et-outils-smb">Énumération Active Directory avec Nmap et Outils SMB</h1>
+<p>Ce guide vous explique comment identifier et énumérer les services Active Directory (AD) et les partages SMB dans un réseau cible à l'aide d'outils comme <strong>Nmap</strong>, <strong>smbclient</strong>, et <strong>smbmap</strong>. Ces techniques sont essentielles pour découvrir des informations critiques lors d'un test d'intrusion.</p>
 <hr />
-<h2 id="creation-des-utilisateurs">👥 Création des Utilisateurs</h2>
-<h3 id="1-ajouter-un-utilisateur">1. Ajouter un utilisateur</h3>
+<h2 id="prerequis">📋 Prérequis</h2>
 <ul>
-<li>Dans <strong>Active Directory Users and Computers</strong> :</li>
-<li>Allez dans <strong>Outils &gt; Utilisateurs et ordinateurs Active Directory</strong>.</li>
-<li>Cliquez sur le <strong>nom de votre domaine</strong>.</li>
-<li>Faites un <strong>clic droit sur Users &gt; Nouveau &gt; Utilisateur</strong>.</li>
-<li>
-<p>Remplissez les informations nécessaires pour créer l'utilisateur.</p>
-</li>
-<li>
-<p><strong>Activer et configurer le compte</strong> :</p>
-</li>
-<li>Faites un <strong>clic droit sur l'utilisateur &gt; Onglet Compte</strong>.</li>
-<li>Décochez <strong>"Le compte est verrouillé"</strong> pour déverrouiller le compte.</li>
-<li>Configurez les <strong>propriétés du mot de passe</strong> (par exemple, "Le mot de passe n'expire jamais").</li>
+<li>Une machine Linux (comme Kali Linux ou une VM Debian).</li>
+<li>Accès à un réseau cible ou à un environnement de test (comme TryHackMe).</li>
+<li>Outils installés : Nmap, Samba (pour <code>smbclient</code> et <code>smbmap</code>).</li>
+<li>Connaissances de base en ligne de commande.</li>
 </ul>
 <hr />
-<h2 id="types-et-etendues-des-groupes">👥 Types et Étendues des Groupes</h2>
-<h3 id="1-types-de-groupes">1. Types de groupes</h3>
+<h2 id="identification-des-hotes-actifs">🔍 Identification des Hôtes Actifs</h2>
+<h3 id="1-utilisation-de-fping-pour-decouvrir-les-hotes-actifs">1. Utilisation de <code>fping</code> pour découvrir les hôtes actifs</h3>
+<p>Pour identifier les hôtes actifs dans un sous-réseau, utilisez <code>fping</code> avec les options suivantes :</p>
+<pre class="bash"><code>fping -agq 10.211.11.0/24</code></pre>
 <ul>
-<li><strong>Groupes de sécurité</strong> :</li>
-<li>
-<p>Utilisent un <strong>jeton d'accès</strong> pour contrôler les autorisations et les accès aux ressources.</p>
-</li>
-<li>
-<p><strong>Groupes de distribution</strong> :</p>
-</li>
-<li>Utilisés principalement pour la <strong>messagerie</strong> et la <strong>diffusion</strong>.</li>
+<li><code>-a</code> : Affiche uniquement les hôtes actifs.</li>
+<li><code>-g</code> : Génère une liste de cibles à partir d'une plage d'adresses IP.</li>
+<li><code>-q</code> : Mode silencieux, sans affichage des erreurs.</li>
+</ul>
+<p>Exemple de sortie :
+<div class="highlight"><pre><span></span><code>10.211.11.1
+10.211.11.10
+10.211.11.20
+10.211.11.250
+</code></pre></div></p>
+<hr />
+<h3 id="2-utilisation-de-nmap-pour-un-scan-ping">2. Utilisation de Nmap pour un scan ping</h3>
+<p>Pour confirmer les hôtes actifs avec Nmap, utilisez la commande suivante :</p>
+<pre class="bash"><code>nmap -sn 10.211.11.0/24</code></pre>
+<ul>
+<li><code>-sn</code> : Effectue un scan ping pour identifier les hôtes actifs sans scanner les ports.</li>
 </ul>
 <hr />
-<h3 id="2-etendues-des-groupes">2. Étendues des groupes</h3>
+<h2 id="identification-des-services-active-directory">🎯 Identification des Services Active Directory</h2>
+<h3 id="1-scan-des-ports-specifiques-lies-a-active-directory">1. Scan des ports spécifiques liés à Active Directory</h3>
+<p>Pour identifier les services Active Directory, utilisez Nmap pour scanner les ports suivants : 88 (Kerberos), 135 (RPC), 139 (NetBIOS), 389 (LDAP), 445 (SMB), et 636 (LDAPS).</p>
+<pre class="bash"><code>nmap -p 88,135,139,389,445,636 -sV -sC -iL hosts.txt</code></pre>
 <ul>
-<li><strong>Domaine local</strong> :</li>
-<li>
-<p>Contiennent des <strong>utilisateurs, ordinateurs ou groupes</strong> pour gérer les autorisations d'accès au sein d'un même domaine.</p>
-</li>
-<li>
-<p><strong>Globale</strong> :</p>
-</li>
-<li>Contiennent des <strong>utilisateurs et ordinateurs</strong> du même domaine.</li>
-<li>
-<p>Peuvent être positionnés sur n'importe quelle ressource de la forêt.</p>
-</li>
-<li>
-<p><strong>Universelle</strong> :</p>
-</li>
-<li>Peuvent être positionnés sur les <strong>ACL de toutes les ressources de la forêt</strong>.</li>
+<li><code>-sV</code> : Détecte les versions des services en cours d'exécution.</li>
+<li><code>-sC</code> : Exécute les scripts NSE par défaut pour une énumération approfondie.</li>
+<li><code>-iL hosts.txt</code> : Lit la liste des hôtes cibles depuis un fichier.</li>
+</ul>
+<p>Exemple de sortie :
+<div class="highlight"><pre><span></span><code>PORT    STATE SERVICE      VERSION
+88/tcp  open  kerberos-sec Microsoft Windows Kerberos
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows netbios-ssn
+389/tcp open  ldap         Microsoft Windows Active Directory LDAP
+445/tcp open  microsoft-ds Windows Server 2019 Datacenter 17763 microsoft-ds
+636/tcp open  tcpwrapped
+</code></pre></div></p>
+<hr />
+<h3 id="2-identification-du-controleur-de-domaine-dc">2. Identification du Contrôleur de Domaine (DC)</h3>
+<p>Un contrôleur de domaine est généralement identifiable par les ports ouverts suivants :
+- <strong>88 (Kerberos)</strong> : Utilisé pour l'authentification.
+- <strong>389 (LDAP)</strong> : Protocole pour accéder aux annuaires Active Directory.
+- <strong>445 (SMB)</strong> : Partage de fichiers et administration à distance.</p>
+<hr />
+<h2 id="enumeration-des-partages-smb">📁 Énumération des Partages SMB</h2>
+<h3 id="1-utilisation-de-smbclient-pour-lister-les-partages">1. Utilisation de <code>smbclient</code> pour lister les partages</h3>
+<p>Pour lister les partages SMB accessibles, utilisez <code>smbclient</code> avec une connexion anonyme :</p>
+<pre class="bash"><code>smbclient -L //10.211.11.10 -N</code></pre>
+<ul>
+<li><code>-L</code> : Liste les partages disponibles.</li>
+<li><code>-N</code> : Connexion anonyme (sans mot de passe).</li>
+</ul>
+<p>Exemple de sortie :
+<div class="highlight"><pre><span></span><code>Sharename       Type      Comment
+---------       ----      -------
+ADMIN$          Disk      Remote Admin
+AnonShare       Disk
+C$              Disk      Default share
+IPC$            IPC       Remote IPC
+NETLOGON        Disk      Logon server share
+SharedFiles     Disk
+SYSVOL          Disk      Logon server share
+UserBackups     Disk
+</code></pre></div></p>
+<hr />
+<h3 id="2-utilisation-de-smbmap-pour-enumerer-les-permissions">2. Utilisation de <code>smbmap</code> pour énumérer les permissions</h3>
+<p>Pour identifier les permissions des partages, utilisez <code>smbmap</code> :</p>
+<pre class="bash"><code>smbmap -H 10.211.11.10</code></pre>
+<p>Exemple de sortie :
+<div class="highlight"><pre><span></span><code>Disk                     Permissions     Comment
+----                     -----------     -------
+ADMIN$                   NO ACCESS       Remote Admin
+AnonShare                READ, WRITE
+C$                       NO ACCESS       Default share
+IPC$                     NO ACCESS       Remote IPC
+NETLOGON                 NO ACCESS       Logon server share
+SharedFiles              READ, WRITE
+SYSVOL                   NO ACCESS       Logon server share
+UserBackups              READ, WRITE
+</code></pre></div></p>
+<hr />
+<h3 id="3-acces-aux-partages-smb">3. Accès aux partages SMB</h3>
+<p>Pour accéder à un partage SMB, utilisez <code>smbclient</code> :</p>
+<pre class="bash"><code>smbclient //10.211.11.10/SharedFiles -N</code></pre>
+<ul>
+<li>Téléchargez un fichier avec la commande <code>get</code> :
+  <pre class="bash"><code>get Mouse_and_Malware.txt</code></pre></li>
 </ul>
 <hr />
-<h2 id="creation-et-configuration-des-groupes">👥 Création et Configuration des Groupes</h2>
-<h3 id="1-ajouter-un-groupe">1. Ajouter un groupe</h3>
-<ul>
-<li>Dans <strong>Users</strong>, faites un <strong>clic droit &gt; Nouveau &gt; Groupe</strong>.</li>
-</ul>
+<h2 id="autres-outils-utiles">🔧 Autres Outils Utiles</h2>
+<h3 id="1-impacket">1. <strong>Impacket</strong></h3>
+<p>Utilisez <code>impacket-smbclient</code> pour une alternative Python à <code>smbclient</code>.</p>
+<h3 id="2-crackmapexec">2. <strong>CrackMapExec</strong></h3>
+<p>Outil puissant pour l'énumération et les tests de crédentials sur SMB.</p>
+<h3 id="3-enum4linux">3. <strong>enum4linux</strong></h3>
+<p>Pour une énumération approfondie des services SMB :
+<pre class="bash"><code>enum4linux -a 10.211.11.10</code></pre></p>
 <hr />
-<h3 id="2-configurer-le-groupe">2. Configurer le groupe</h3>
+<h2 id="notes-supplementaires">📌 Notes Supplémentaires</h2>
 <ul>
-<li><strong>Nom</strong> : Entrez le nom du groupe.</li>
-<li><strong>Étendue</strong> : Sélectionnez l'étendue (par défaut : <strong>Globale</strong>).</li>
-<li><strong>Type</strong> : Sélectionnez le type (par défaut : <strong>Groupes de sécurité</strong>).</li>
-</ul>
-<hr />
-<h3 id="3-ajouter-un-utilisateur-a-un-groupe">3. Ajouter un utilisateur à un groupe</h3>
-<ul>
-<li>Faites un <strong>clic droit sur le groupe sélectionné &gt; Propriétés &gt; Onglet Membre</strong>.</li>
-<li>Cliquez sur <strong>Ajouter</strong> et sélectionnez l'utilisateur.</li>
-<li>Cliquez sur <strong>Appliquer</strong> pour enregistrer.</li>
-</ul>
-<hr />
-<h2 id="integration-dun-poste-au-domaine">🌐 Intégration d'un Poste au Domaine</h2>
-<h3 id="1-parametrer-le-dns-du-poste">1. Paramétrer le DNS du poste</h3>
-<ul>
-<li>Configurez le <strong>DNS du poste</strong> avec l'<strong>adresse IP du serveur ADDS</strong>.</li>
-</ul>
-<hr />
-<h3 id="2-rejoindre-le-domaine">2. Rejoindre le domaine</h3>
-<ul>
-<li>Allez dans <strong>Panneau de configuration &gt; Système et sécurité &gt; Système</strong>.</li>
-<li>Cliquez sur <strong>Modifier les paramètres</strong> (à côté du nom de l'ordinateur).</li>
-<li>Allez dans <strong>Nom de l'ordinateur &gt; Modifier</strong>.</li>
-<li>Sélectionnez <strong>Membre d'un domaine</strong> et entrez le <strong>nom du domaine</strong>.</li>
-</ul>
-<hr />
-<h3 id="3-sauthentifier-avec-un-compte-administrateur">3. S'authentifier avec un compte administrateur</h3>
-<ul>
-<li>Entrez les <strong>identifiants d'un compte administrateur du domaine</strong>.</li>
-</ul>
-<hr />
-<h3 id="4-redemarrer-le-poste">4. Redémarrer le poste</h3>
-<ul>
-<li>Redémarrez le poste pour appliquer les modifications.</li>
-</ul>
-<hr />
-<h3 id="5-verifier-la-connexion-au-domaine">5. Vérifier la connexion au domaine</h3>
-<ul>
-<li>Ouvrez un <strong>terminal</strong> et testez la connectivité :
-  <pre class="bash"><code>ping &lt;nom_NetBIOS_du_serveur_AD&gt;
-ping &lt;nom_du_domaine&gt;</code></pre></li>
-</ul>
-<hr />
-<h2 id="notes-supplementaires">📌 Notes supplémentaires</h2>
-<ul>
-<li><strong>Permissions</strong> : Assurez-vous que les utilisateurs et groupes ont les bonnes permissions pour accéder aux ressources.</li>
-<li><strong>Sécurité</strong> : Utilisez des mots de passe robustes pour les comptes administrateurs.</li>
-<li><strong>Tests</strong> : Après chaque étape, testez la connectivité et la configuration pour vérifier que tout fonctionne correctement.</li>
+<li><strong>Sécurité</strong> : Les partages SMB anonymes sont une mauvaise pratique, mais peuvent exister pour des raisons de compatibilité avec des systèmes hérités.</li>
+<li><strong>Exploitation</strong> : Les fichiers trouvés dans les partages SMB peuvent contenir des informations sensibles comme des identifiants ou des configurations.</li>
+<li><strong>Tests</strong> : Toujours tester les permissions et les accès après chaque modification ou découverte.</li>
 </ul>
 
 
@@ -1396,7 +1150,7 @@ ping &lt;nom_du_domaine&gt;</code></pre></li>
     <span class="md-icon" title="Dernière mise à jour">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom" title="27 octobre 2025 19:14:56 CET">27/10/2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom" title="18 novembre 2025 20:13:40 CET">18/11/2025</span>
   </span>
 
     
@@ -1452,10 +1206,10 @@ ping &lt;nom_du_domaine&gt;</code></pre></li>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", {"navigation.expand": false}, "navigation.sections", "search.highlight", "search.suggest", "content.code.copy", "toc.integrate", "cards"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", {"navigation.expand": false}, "navigation.sections", "search.highlight", "search.suggest", "content.code.copy", "toc.integrate", "cards"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
