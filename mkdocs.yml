@@ -116,4 +116,5 @@ nav:
       - Commandes Switch Alcatel : Guide/commandes_alcatel.md
       - Git / Github : Guide/git_github.md
   - TryHackMe : 
-      - Énumération AD avec nmap : TryHackMe/Énumération_AD_avec_nmap_et_outils_smb.md
+      - AD : Énumération de base :
+          - Énumération Active Directory avec Nmap : TryHackMe/enumeration_AD_avec_nmap.md
