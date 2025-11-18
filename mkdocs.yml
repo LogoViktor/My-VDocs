@@ -113,5 +113,7 @@ nav:
           - GPO: Notice/Active Directory/AD_GPO.md
   - Guide:
       - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
-      - Commandes Switch Alcatel: Guide/commandes_alcatel.md
+      - Commandes Switch Alcatel : Guide/commandes_alcatel.md
       - Git / Github : Guide/git_github.md
+  - TryHackMe : 
+      - Énumération AD avec nmap : TryHackMe/Énumération_AD_avec_nmap_et_outils_smb.md
