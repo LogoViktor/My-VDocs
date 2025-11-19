@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # utile si jamais tu veux récupérer l'historique complet
+          fetch-depth: 0  # Utile pour récupérer l'historique complet
 
       # 2️⃣ Configurer Python
       - name: Setup Python
@@ -30,7 +30,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install mkdocs
-          pip install "mkdocs-material>=9.5.0"
+          pip install mkdocs-windmill
           pip install pymdown-extensions
           pip install mkdocs-git-revision-date-localized-plugin
 
