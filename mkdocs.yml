@@ -3,8 +3,26 @@ site_description: Documentation technique — DHCP, NFS, AD, Cisco, et plus
 site_author: Admin Réseau
 
 theme:
-  name: windmill
+  name: material
   language: fr
+  palette:
+    - scheme: nord
+      primary: deep blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Passer en mode clair
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Passer en mode sombre
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
 
 markdown_extensions:
   - admonition
