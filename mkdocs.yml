@@ -3,7 +3,7 @@ site_description: Documentation technique — DHCP, NFS, AD, Cisco, et plus
 site_author: Admin Réseau
 
 theme:
-  name: windmill-dark
+  name: windmill
   language: fr
 
 markdown_extensions:
