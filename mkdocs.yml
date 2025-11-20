@@ -3,36 +3,8 @@ site_description: Documentation technique — DHCP, NFS, AD, Cisco, et plus
 site_author: Admin Réseau
 
 theme:
-  name: windmill
+  name: windmill-dark
   language: fr
-  font:
-    text: Roboto
-    code: "Fira Code"
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: light
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-sunny
-        name: Passer en mode sombre
-    - media: "(prefers-color-scheme: dark)"
-      scheme: dark
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-night
-        name: Passer en mode clair
-  features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.top
-    - navigation.expand: false
-    - navigation.sections
-    - search.highlight
-    - search.suggest
-    - content.code.copy
-    - toc.integrate
 
 markdown_extensions:
   - admonition
@@ -89,16 +61,16 @@ plugins:
 nav:
   - Accueil: index.md
   - Notice:
-      - DHCP :
+      - DHCP:
           - Installation et configuration de base: Notice/DHCP/DHCP_base.md
           - Configuration VLAN: Notice/DHCP/DHCP_vlan.md
-      - OSPF :
-          - OSPF : Notice/OSPF/ospf.md
-          - OSPFv3 : Notice/OSPF/ospfv3.md
-      - NFS / SAMBA :
+      - OSPF:
+          - OSPF: Notice/OSPF/ospf.md
+          - OSPFv3: Notice/OSPF/ospfv3.md
+      - NFS / SAMBA:
           - NFS: Notice/NFS_SAMBA/nfs.md
           - SAMBA: Notice/NFS_SAMBA/samba.md
-      - Apache : Notice/apache.md
+      - Apache: Notice/apache.md
       - Proxy Squid: Notice/proxysquid.md
       - Active Directory:
           - Installation et configuration de base: Notice/Active Directory/AD_base.md
@@ -106,142 +78,8 @@ nav:
           - GPO: Notice/Active Directory/AD_GPO.md
   - Guide:
       - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
-      - Commandes Switch Alcatel : Guide/commandes_alcatel.md
-      - Git / Github : Guide/git_github.md
-  - TryHackMe :
-      - AD : Énumération de base :
-          - Énumération Active Directory avec Nmap : TryHackMe/AD_:_Énumération_de_base/enumeration_AD_avec_nmap.md          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-  - pymdownx.progressbar
-  - pymdownx.snippets
-
-plugins:
-  - search:
-      separator: '[\s-.]+'
-      lang:
-        - fr
-        - en
-  - git-revision-date-localized:
-      type: custom
-      locale: fr
-      timezone: Europe/Paris
-      fallback_to_build_date: false
-      custom_format: "%d/%m/%Y"
-
-nav:
-  - Accueil: index.md
-  - Notice:
-      - DHCP :
-          - Installation et configuration de base: Notice/DHCP/DHCP_base.md
-          - Configuration VLAN: Notice/DHCP/DHCP_vlan.md
-      - OSPF :
-          - OSPF : Notice/OSPF/ospf.md
-          - OSPFv3 : Notice/OSPF/ospfv3.md
-      - NFS / SAMBA :
-          - NFS: Notice/NFS_SAMBA/nfs.md
-          - SAMBA: Notice/NFS_SAMBA/samba.md
-      - Apache : Notice/apache.md
-      - Proxy Squid: Notice/proxysquid.md
-      - Active Directory:
-          - Installation et configuration de base: Notice/Active Directory/AD_base.md
-          - Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
-          - GPO: Notice/Active Directory/AD_GPO.md
-  - Guide:
-      - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
-      - Commandes Switch Alcatel : Guide/commandes_alcatel.md
-      - Git / Github : Guide/git_github.md
-  - TryHackMe :
-      - AD : Énumération de base :
-          - Énumération Active Directory avec Nmap : TryHackMe/AD_:_Énumération_de_base/enumeration_AD_avec_nmap.md  - pymdownx.tilde
-  - pymdownx.progressbar
-  - pymdownx.snippets
-
-plugins:
-  - search:
-      separator: '[\s-.]+'
-      lang:
-        - fr
-        - en
-  - git-revision-date-localized:
-      type: custom
-      locale: fr
-      timezone: Europe/Paris
-      fallback_to_build_date: false
-      custom_format: "%d/%m/%Y"
-
-nav:
-  - Accueil: index.md
-  - Notice:
-      - DHCP :
-          - Installation et configuration de base: Notice/DHCP/DHCP_base.md
-          - Configuration VLAN: Notice/DHCP/DHCP_vlan.md
-      - OSPF :
-          - OSPF : Notice/OSPF/ospf.md
-          - OSPFv3 : Notice/OSPF/ospfv3.md
-      - NFS / SAMBA :
-          - NFS: Notice/NFS_SAMBA/nfs.md
-          - SAMBA: Notice/NFS_SAMBA/samba.md
-      - Apache : Notice/apache.md
-      - Proxy Squid: Notice/proxysquid.md
-      - Active Directory:
-          - Installation et configuration de base: Notice/Active Directory/AD_base.md
-          - Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
-          - GPO: Notice/Active Directory/AD_GPO.md
-  - Guide:
-      - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
-      - Commandes Switch Alcatel : Guide/commandes_alcatel.md
-      - Git / Github : Guide/git_github.md
-  - TryHackMe :
-      - AD : Énumération de base :
-          - Énumération Active Directory avec Nmap : TryHackMe/AD_:_Énumération_de_base/enumeration_AD_avec_nmap.md          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-  - pymdownx.progressbar
-  - pymdownx.snippets
-
-plugins:
-  - search:
-      separator: '[\s-.]+'
-      lang:
-        - fr
-        - en
-plugins:
-  - search
-  - git-revision-date-localized:
-      type: custom       
-      locale: fr
-      timezone: Europe/Paris
-      fallback_to_build_date: false
-      custom_format: "%d/%m/%Y"
-
-
-nav:
-  - Accueil: index.md
-  - Notice:
-      - DHCP :
-          - Installation et configuration de base: Notice/DHCP/DHCP_base.md
-          - Configuration VLAN: Notice/DHCP/DHCP_vlan.md
-      - OSPF :
-          - OSPF : Notice/OSPF/ospf.md
-          - OSPFv3 : Notice/OSPF/ospfv3.md
-      - NFS / SAMBA :
-          - NFS: Notice/NFS_SAMBA/nfs.md
-          - SAMBA: Notice/NFS_SAMBA/samba.md
-      - Apache : Notice/apache.md
-      - Proxy Squid: Notice/proxysquid.md
-      - Active Directory:
-          - Installation et configuration de base: Notice/Active Directory/AD_base.md
-          - Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
-          - GPO: Notice/Active Directory/AD_GPO.md
-  - Guide:
-      - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
-      - Commandes Switch Alcatel : Guide/commandes_alcatel.md
-      - Git / Github : Guide/git_github.md
-  - TryHackMe : 
-      - AD : Énumération de base :
-          - Énumération Active Directory avec Nmap : TryHackMe/AD_:_Énumération_de_base/enumeration_AD_avec_nmap.md
+      - Commandes Switch Alcatel: Guide/commandes_alcatel.md
+      - Git / Github: Guide/git_github.md
+  - TryHackMe:
+      - "AD : Énumération de base":
+          - Énumération Active Directory avec Nmap: "TryHackMe/AD_:_Énumération_de_base/enumeration_AD_avec_nmap.md"
