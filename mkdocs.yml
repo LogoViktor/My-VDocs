@@ -92,10 +92,10 @@ nav:
           - Installation et configuration de base: Notice/Active Directory/AD_base.md
           - Utilisateurs et Groupes: Notice/Active Directory/AD_users.md
           - GPO: Notice/Active Directory/AD_GPO.md
+      - BGP :
   - Guide:
       - Commandes Switch/Routeur Cisco: Guide/commande_de_base_cisco.md
       - Commandes Switch Alcatel: Guide/commandes_alcatel.md
       - Git / Github: Guide/git_github.md
   - TryHackMe:
-      - "AD : Énumération de base":
-          - Énumération Active Directory avec Nmap: TryHackMe/AD_:_Énumération_de_base/enumeration_AD_avec_nmap.md
+      - AD : Énumération de base :
