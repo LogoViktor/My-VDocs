@@ -1,0 +1,1632 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique — DHCP, NFS, AD, Cisco, et plus">
+      
+      
+        <meta name="author" content="Victor P.">
+      
+      
+      
+        <link rel="prev" href="ospf.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.15">
+    
+    
+      
+        <title>Configuration d'OSPFv3 (Déclaration par Interfaces) - My VDocs</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim" type="text/javascript"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-dospfv3-declaration-par-interfaces" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../index.html" title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My VDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration d'OSPFv3 (Déclaration par Interfaces)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Recherche">
+  <button type="button" class="md-search__button">
+    Recherche
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    My VDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commande_de_base_cisco.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Cisco : Switch et Routeur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commandes_alcatel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Alcatel : Switchs (AOS6 et AOS8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/git_github.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide Technique Git &amp; GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'Apache sous Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxysquid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration du Serveur Proxy Squid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_GPO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création de GPO et Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation de Windows Server 2019 et du service Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_users.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création des Utilisateurs, Groupes et OU dans Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Serveur DHCP sous Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_vlan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP vlan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS SAMBA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NFS SAMBA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/nfs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration de NFS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/samba.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration de Samba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ospf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv2 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv3 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ospfv3.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv3 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-de-base-dospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Configuration de Base d'OSPFv3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Configuration de Base d&#x27;OSPFv3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-activer-ospfv3-sur-le-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Activer OSPFv3 sur le routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-declarer-les-interfaces-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Déclarer les interfaces OSPFv3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Déclarer les interfaces OSPFv3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple de configuration :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuration-complete-par-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuration complète par interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-avancee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Configuration Avancée
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration Avancée">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-le-cout-dune-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Définir le coût d'une interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurer-lauthentification-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurer l'authentification OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configurer-le-type-de-reseau-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configurer le type de réseau OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-de-la-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Vérification de la Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Vérification de la Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verifier-les-voisins-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vérifier les voisins OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verifier-les-routes-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Vérifier les routes OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verifier-les-interfaces-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vérifier les interfaces OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-et-bonnes-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Notes et Bonnes Pratiques
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-de-base-dospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Configuration de Base d'OSPFv3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Configuration de Base d&#x27;OSPFv3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-activer-ospfv3-sur-le-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Activer OSPFv3 sur le routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-declarer-les-interfaces-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Déclarer les interfaces OSPFv3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Déclarer les interfaces OSPFv3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple de configuration :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuration-complete-par-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuration complète par interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-avancee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Configuration Avancée
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration Avancée">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-le-cout-dune-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Définir le coût d'une interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurer-lauthentification-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurer l'authentification OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configurer-le-type-de-reseau-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configurer le type de réseau OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-de-la-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Vérification de la Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Vérification de la Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verifier-les-voisins-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vérifier les voisins OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verifier-les-routes-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Vérifier les routes OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verifier-les-interfaces-ospfv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vérifier les interfaces OSPFv3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-et-bonnes-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Notes et Bonnes Pratiques
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="configuration-dospfv3-declaration-par-interfaces">Configuration d'OSPFv3 (Déclaration par Interfaces)</h1>
+<p>Ce guide vous explique comment configurer <strong>OSPFv3</strong> sur des routeurs en utilisant une <strong>déclaration par interfaces</strong>. OSPFv3 est la version d'OSPF conçue pour fonctionner avec <strong>IPv6</strong>.</p>
+<hr />
+<h2 id="prerequis">📋 Prérequis</h2>
+<ul>
+<li>Deux routeurs (ou plus) compatibles OSPFv3.</li>
+<li>Une topologie réseau connectée (par exemple, via des interfaces Ethernet ou série).</li>
+<li>Accès en ligne de commande (CLI) aux routeurs.</li>
+<li>IPv6 activé et configuré sur les interfaces.</li>
+</ul>
+<hr />
+<h2 id="configuration-de-base-dospfv3">🌐 Configuration de Base d'OSPFv3</h2>
+<h3 id="1-activer-ospfv3-sur-le-routeur">1. Activer OSPFv3 sur le routeur</h3>
+<p>Pour activer OSPFv3 sur un routeur Cisco, utilisez la commande suivante en mode configuration globale :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Router&gt;<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Router#<span class="w"> </span>configure<span class="w"> </span>terminal
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># ipv6 router ospf &lt;ID_Processus&gt;</span>
+</span></code></pre></div>
+<ul>
+<li><code>&lt;ID_Processus&gt;</code> : Identifiant du processus OSPFv3 (par exemple, <code>1</code>).</li>
+</ul>
+<hr />
+<h3 id="2-declarer-les-interfaces-ospfv3">2. Déclarer les interfaces OSPFv3</h3>
+<p>Avec OSPFv3, la configuration se fait directement sur les interfaces.</p>
+<h4 id="exemple-de-configuration">Exemple de configuration :</h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># interface GigabitEthernet0/0</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># ipv6 ospf &lt;ID_Processus&gt; area &lt;ID_Area&gt;</span>
+</span></code></pre></div>
+<ul>
+<li><code>&lt;ID_Processus&gt;</code> : Doit correspondre à l'ID du processus OSPFv3 activé précédemment.</li>
+<li><code>&lt;ID_Area&gt;</code> : Identifiant de l'aire OSPF (par exemple, <code>0</code> pour l'aire principale).</li>
+</ul>
+<hr />
+<h3 id="3-configuration-complete-par-interface">3. Configuration complète par interface</h3>
+<p>Voici un exemple complet de configuration pour un routeur avec deux interfaces IPv6 :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Router&gt;<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Router#<span class="w"> </span>configure<span class="w"> </span>terminal
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>!<span class="w"> </span>Activation<span class="w"> </span>du<span class="w"> </span>processus<span class="w"> </span>OSPFv3
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># ipv6 router ospf 1</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>!<span class="w"> </span>Configuration<span class="w"> </span>de<span class="w"> </span>l<span class="s1">&#39;interface GigabitEthernet0/0</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s1">Router(config)# interface GigabitEthernet0/0</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s1">Router(config-if)# ipv6 address 2001:DB8:1::1/64</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s1">Router(config-if)# ipv6 ospf 1 area 0</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s1">Router(config-if)# no shutdown</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s1">! Configuration de l&#39;</span>interface<span class="w"> </span>GigabitEthernet0/1
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># interface GigabitEthernet0/1</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># ipv6 address 2001:DB8:2::1/64</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># ipv6 ospf 1 area 0</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># no shutdown</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># end</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>Router#<span class="w"> </span>write<span class="w"> </span>memory
+</span></code></pre></div>
+<hr />
+<h2 id="configuration-avancee">🔧 Configuration Avancée</h2>
+<h3 id="1-definir-le-cout-dune-interface">1. Définir le coût d'une interface</h3>
+<p>Le coût OSPFv3 peut être défini manuellement pour influencer le chemin emprunté par le trafic.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># ipv6 ospf cost &lt;valeur&gt;</span>
+</span></code></pre></div>
+<ul>
+<li><code>&lt;valeur&gt;</code> : Coût de l'interface (par exemple, <code>100</code>).</li>
+</ul>
+<hr />
+<h3 id="2-configurer-lauthentification-ospfv3">2. Configurer l'authentification OSPFv3</h3>
+<p>OSPFv3 utilise <strong>IPsec</strong> pour l'authentification. Voici un exemple de configuration de base :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># interface GigabitEthernet0/0</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># ipv6 ospf authentication ipsec spi 500 md5 &lt;mot_de_passe&gt;</span>
+</span></code></pre></div>
+<ul>
+<li><code>&lt;mot_de_passe&gt;</code> : Mot de passe pour l'authentification.</li>
+</ul>
+<hr />
+<h3 id="3-configurer-le-type-de-reseau-ospfv3">3. Configurer le type de réseau OSPFv3</h3>
+<p>OSPFv3 peut fonctionner en différents modes selon le type de réseau.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Router<span class="o">(</span>config-if<span class="o">)</span><span class="c1"># ipv6 ospf network &lt;type&gt;</span>
+</span></code></pre></div>
+<ul>
+<li><code>&lt;type&gt;</code> : Type de réseau (par exemple, <code>point-to-point</code>).</li>
+</ul>
+<hr />
+<h2 id="verification-de-la-configuration">🔍 Vérification de la Configuration</h2>
+<h3 id="1-verifier-les-voisins-ospfv3">1. Vérifier les voisins OSPFv3</h3>
+<p>Pour vérifier que les routeurs OSPFv3 se voient mutuellement :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Router#<span class="w"> </span>show<span class="w"> </span>ipv6<span class="w"> </span>ospf<span class="w"> </span>neighbor
+</span></code></pre></div>
+<hr />
+<h3 id="2-verifier-les-routes-ospfv3">2. Vérifier les routes OSPFv3</h3>
+<p>Pour afficher les routes IPv6 apprises via OSPFv3 :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Router#<span class="w"> </span>show<span class="w"> </span>ipv6<span class="w"> </span>route<span class="w"> </span>ospf
+</span></code></pre></div>
+<hr />
+<h3 id="3-verifier-les-interfaces-ospfv3">3. Vérifier les interfaces OSPFv3</h3>
+<p>Pour voir les interfaces sur lesquelles OSPFv3 est activé :</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Router#<span class="w"> </span>show<span class="w"> </span>ipv6<span class="w"> </span>ospf<span class="w"> </span>interface<span class="w"> </span>brief
+</span></code></pre></div>
+<hr />
+<h2 id="notes-et-bonnes-pratiques">📌 Notes et Bonnes Pratiques</h2>
+<ul>
+<li><strong>ID de routeur</strong> : Assurez-vous que chaque routeur a un ID unique (par défaut, c'est la plus haute adresse IPv6 de loopback ou d'interface active).</li>
+<li><strong>Aires OSPF</strong> : Utilisez des aires pour segmenter votre réseau et optimiser les performances.</li>
+<li><strong>Sécurité</strong> : Activez toujours l'authentification pour sécuriser les échanges OSPFv3.</li>
+<li><strong>Coût des interfaces</strong> : Ajustez le coût des interfaces pour influencer le chemin emprunté par le trafic.</li>
+<li><strong>IPv6</strong> : Assurez-vous que IPv6 est correctement configuré sur toutes les interfaces.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copié dans le presse-papier","clipboard.copy":"Copier dans le presse-papier","search.result.more.one":"1 de plus sur cette page","search.result.more.other":"# de plus sur cette page","search.result.none":"Aucun document trouvé","search.result.one":"1 document trouvé","search.result.other":"# documents trouvés","search.result.placeholder":"Taper pour démarrer la recherche","search.result.term.missing":"Non trouvé","select.version":"Sélectionner la version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      
+    
+  </body>
+</html>

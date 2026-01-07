@@ -1,0 +1,1648 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique — DHCP, NFS, AD, Cisco, et plus">
+      
+      
+        <meta name="author" content="Victor P.">
+      
+      
+      
+        <link rel="prev" href="AD_GPO.html">
+      
+      
+        <link rel="next" href="AD_users.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.15">
+    
+    
+      
+        <title>Installation de Windows Server 2019 et du service Active Directory - My VDocs</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim" type="text/javascript"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-de-windows-server-2019-et-du-service-active-directory" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../index.html" title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My VDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installation de Windows Server 2019 et du service Active Directory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Recherche">
+  <button type="button" class="md-search__button">
+    Recherche
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    My VDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commande_de_base_cisco.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Cisco : Switch et Routeur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commandes_alcatel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Alcatel : Switchs (AOS6 et AOS8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/git_github.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide Technique Git &amp; GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'Apache sous Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxysquid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration du Serveur Proxy Squid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="AD_GPO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création de GPO et Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation de Windows Server 2019 et du service Active Directory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="AD_base.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation de Windows Server 2019 et du service Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-du-systeme-dexploitation-windows-server-2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖥️ Installation du système d'exploitation Windows Server 2019
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥️ Installation du système d&#x27;exploitation Windows Server 2019">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuration-dune-vm-pour-windows-server-2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuration d'une VM pour Windows Server 2019
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configuration-de-la-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuration de la VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-installation-de-windows-server-2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Installation de Windows Server 2019
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-de-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Configuration de Windows Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration de Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configurer-linterface-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configurer l'interface réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-changer-le-nom-du-serveur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Changer le nom du serveur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-test-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Test de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-dactive-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 Installation d'Active Directory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 Installation d&#x27;Active Directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installation-dun-nouveau-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Installation d'un nouveau domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-du-serveur-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Configuration du serveur DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Configuration du serveur DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installation-du-role-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Installation du rôle DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurer-la-carte-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurer la carte réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversion-du-serveur-en-controleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Conversion du serveur en contrôleur de domaine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Conversion du serveur en contrôleur de domaine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-promouvoir-le-serveur-en-controleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Promouvoir le serveur en contrôleur de domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-supplementaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Notes supplémentaires
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="AD_users.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création des Utilisateurs, Groupes et OU dans Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Serveur DHCP sous Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_vlan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP vlan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS SAMBA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NFS SAMBA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/nfs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration de NFS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/samba.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration de Samba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSPF/ospf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv2 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSPF/ospfv3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv3 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-du-systeme-dexploitation-windows-server-2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖥️ Installation du système d'exploitation Windows Server 2019
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖥️ Installation du système d&#x27;exploitation Windows Server 2019">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuration-dune-vm-pour-windows-server-2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuration d'une VM pour Windows Server 2019
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configuration-de-la-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuration de la VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-installation-de-windows-server-2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Installation de Windows Server 2019
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-de-windows-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔧 Configuration de Windows Server
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration de Windows Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configurer-linterface-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configurer l'interface réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-changer-le-nom-du-serveur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Changer le nom du serveur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-test-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Test de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-dactive-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 Installation d'Active Directory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏢 Installation d&#x27;Active Directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installation-dun-nouveau-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Installation d'un nouveau domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-du-serveur-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Configuration du serveur DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Configuration du serveur DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installation-du-role-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Installation du rôle DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurer-la-carte-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurer la carte réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conversion-du-serveur-en-controleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 Conversion du serveur en contrôleur de domaine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Conversion du serveur en contrôleur de domaine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-promouvoir-le-serveur-en-controleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Promouvoir le serveur en contrôleur de domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-supplementaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Notes supplémentaires
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="installation-de-windows-server-2019-et-du-service-active-directory">Installation de Windows Server 2019 et du service Active Directory</h1>
+<p>Ce guide vous explique comment installer <strong>Windows Server 2019</strong> et configurer le service <strong>Active Directory</strong> pour transformer votre serveur en contrôleur de domaine.</p>
+<hr />
+<h2 id="installation-du-systeme-dexploitation-windows-server-2019">🖥️ Installation du système d'exploitation Windows Server 2019</h2>
+<h3 id="1-configuration-dune-vm-pour-windows-server-2019">1. Configuration d'une VM pour Windows Server 2019</h3>
+<p>Voici un exemple de configuration pour une machine virtuelle :</p>
+<ul>
+<li><strong>ISO image</strong> : Téléchargez l'ISO de Windows Server 2019.</li>
+<li><strong>Type</strong> : Microsoft Windows.</li>
+<li><strong>Version</strong> : Windows Server 2019.</li>
+<li><strong>RAM</strong> : 8192 MB.</li>
+<li><strong>CPU</strong> : 6 cœurs.</li>
+<li><strong>Carte réseau</strong> : Accès par pont.</li>
+</ul>
+<hr />
+<h3 id="2-configuration-de-la-vm">2. Configuration de la VM</h3>
+<p>Après la création de la VM :</p>
+<ul>
+<li>Dans <strong>Configuration &gt; System</strong> :</li>
+<li>Activer <strong>EFI</strong>.</li>
+<li>Activer <strong>"Enable secure boot"</strong>.</li>
+<li>Cliquer sur <strong>"Reset keys to default"</strong>.</li>
+</ul>
+<hr />
+<h3 id="3-installation-de-windows-server-2019">3. Installation de Windows Server 2019</h3>
+<p>Lorsque l'OS se lance :</p>
+<ul>
+<li>Cliquez sur <strong>"Je n'ai pas de clé de produit"</strong>.</li>
+<li>Sélectionnez <strong>Windows Server 2019 Standard (expérience de bureau)</strong>.</li>
+<li>Sélectionnez le seul disque disponible.</li>
+<li>Entrez un mot de passe administrateur.</li>
+<li>Installez puis redémarrez.</li>
+</ul>
+<hr />
+<h2 id="configuration-de-windows-server">🔧 Configuration de Windows Server</h2>
+<h3 id="1-configurer-linterface-reseau">1. Configurer l'interface réseau</h3>
+<p>Configurez l'interface réseau du serveur avec une <strong>adresse IP statique</strong> incluse dans la plage IP de votre réseau pour éviter les renouvellements de bail DHCP.</p>
+<hr />
+<h3 id="2-changer-le-nom-du-serveur">2. Changer le nom du serveur</h3>
+<ul>
+<li>Allez dans <strong>Serveur local &gt; Nom de l'ordinateur &gt; Modifier</strong>.</li>
+<li>Renommez le serveur, par exemple : <code>W2019_nom_de_famille</code>.</li>
+</ul>
+<hr />
+<h3 id="3-test-de-configuration">3. Test de configuration</h3>
+<ul>
+<li>Testez la connectivité en effectuant un <strong>ping</strong> vers le PC client.</li>
+</ul>
+<hr />
+<h2 id="installation-dactive-directory">🏢 Installation d'Active Directory</h2>
+<h3 id="1-installation-dun-nouveau-domaine">1. Installation d'un nouveau domaine</h3>
+<ul>
+<li>Dans le <strong>tableau de bord de Windows Server</strong> :</li>
+<li>Cliquez sur <strong>Ajouter des rôles et des fonctionnalités</strong>.</li>
+<li>Sélectionnez le serveur à configurer.</li>
+<li>Allez dans <strong>Rôles de serveurs &gt; Services AD DS</strong>.</li>
+<li>Cliquez sur <strong>Suivant</strong> jusqu'à l'installation.</li>
+</ul>
+<hr />
+<h2 id="configuration-du-serveur-dns">🌐 Configuration du serveur DNS</h2>
+<h3 id="1-installation-du-role-dns">1. Installation du rôle DNS</h3>
+<ul>
+<li>Dans le <strong>tableau de bord de Windows Server</strong> :</li>
+<li>Cliquez sur <strong>Ajouter des rôles et des fonctionnalités</strong>.</li>
+<li>Sélectionnez le serveur à configurer.</li>
+<li>Allez dans <strong>Rôles de serveurs &gt; Serveur DNS</strong>.</li>
+<li>Cliquez sur <strong>Suivant</strong> jusqu'à l'installation.</li>
+</ul>
+<hr />
+<h3 id="2-configurer-la-carte-reseau">2. Configurer la carte réseau</h3>
+<ul>
+<li>Configurez la carte réseau du serveur avec l'adresse DNS suivante : <code>127.0.0.1</code> (loopback).</li>
+</ul>
+<hr />
+<h2 id="conversion-du-serveur-en-controleur-de-domaine">🔄 Conversion du serveur en contrôleur de domaine</h2>
+<h3 id="1-promouvoir-le-serveur-en-controleur-de-domaine">1. Promouvoir le serveur en contrôleur de domaine</h3>
+<ul>
+<li>Dans le <strong>gestionnaire de serveur</strong>, cliquez sur le drapeau &gt; <strong>Promouvoir ce serveur en contrôleur de domaine</strong>.</li>
+<li>Sélectionnez <strong>Configuration de déploiement &gt; Ajouter une nouvelle forêt</strong>.</li>
+<li>Entrez le <strong>nom de domaine racine</strong> (par exemple : <code>PAILLART.test</code>).</li>
+</ul>
+<hr />
+<h2 id="notes-supplementaires">📌 Notes supplémentaires</h2>
+<ul>
+<li><strong>Adresses IP</strong> : Assurez-vous que les adresses IP statiques sont correctement configurées pour éviter les conflits.</li>
+<li><strong>Sécurité</strong> : Utilisez des mots de passe robustes pour le compte administrateur.</li>
+<li><strong>Tests</strong> : Après chaque étape, testez la connectivité et la configuration pour vérifier que tout fonctionne correctement.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copié dans le presse-papier","clipboard.copy":"Copier dans le presse-papier","search.result.more.one":"1 de plus sur cette page","search.result.more.other":"# de plus sur cette page","search.result.none":"Aucun document trouvé","search.result.one":"1 document trouvé","search.result.other":"# documents trouvés","search.result.placeholder":"Taper pour démarrer la recherche","search.result.term.missing":"Non trouvé","select.version":"Sélectionner la version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      
+    
+  </body>
+</html>

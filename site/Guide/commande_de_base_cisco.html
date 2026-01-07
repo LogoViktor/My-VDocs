@@ -1,0 +1,1720 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique — DHCP, NFS, AD, Cisco, et plus">
+      
+      
+        <meta name="author" content="Victor P.">
+      
+      
+      
+        <link rel="prev" href="../index.html">
+      
+      
+        <link rel="next" href="commandes_alcatel.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.15">
+    
+    
+      
+        <title>Commandes Cisco : Switch et Routeur - My VDocs</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim" type="text/javascript"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#commandes-cisco-switch-et-routeur" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../index.html" title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My VDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Commandes Cisco : Switch et Routeur
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Recherche">
+  <button type="button" class="md-search__button">
+    Recherche
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    My VDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Cisco : Switch et Routeur
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="commande_de_base_cisco.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Cisco : Switch et Routeur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-de-base-communes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes de base communes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-specifiques-aux-switchs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes spécifiques aux Switchs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes spécifiques aux Switchs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sécurité
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-specifiques-aux-routeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes spécifiques aux Routeurs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes spécifiques aux Routeurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocoles-de-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocoles de routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-avancees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes avancées
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes avancées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vlans-avances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLANs avancés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routage-avance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routage avancé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-de-depannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes de dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="commandes_alcatel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Alcatel : Switchs (AOS6 et AOS8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="git_github.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide Technique Git &amp; GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/apache.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'Apache sous Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/proxysquid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration du Serveur Proxy Squid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/Active%20Directory/AD_GPO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création de GPO et Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/Active%20Directory/AD_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation de Windows Server 2019 et du service Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/Active%20Directory/AD_users.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création des Utilisateurs, Groupes et OU dans Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/DHCP/DHCP_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Serveur DHCP sous Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/DHCP/DHCP_vlan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP vlan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS SAMBA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NFS SAMBA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/NFS_SAMBA/nfs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration de NFS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/NFS_SAMBA/samba.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration de Samba
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/OSPF/ospf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv2 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Notice/OSPF/ospfv3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration d'OSPFv3 (Déclaration par Interfaces)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-de-base-communes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes de base communes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-specifiques-aux-switchs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes spécifiques aux Switchs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes spécifiques aux Switchs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sécurité
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-specifiques-aux-routeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes spécifiques aux Routeurs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes spécifiques aux Routeurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocoles-de-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocoles de routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-avancees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes avancées
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes avancées">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vlans-avances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLANs avancés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routage-avance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routage avancé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-de-depannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes de dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="commandes-cisco-switch-et-routeur">Commandes Cisco : Switch et Routeur</h1>
+<h2 id="commandes-de-base-communes">Commandes de base communes</h2>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enable</code></td>
+<td>Passer en mode privilégié (EXEC)</td>
+</tr>
+<tr>
+<td><code>disable</code></td>
+<td>Quitter le mode privilégié</td>
+</tr>
+<tr>
+<td><code>configure terminal</code></td>
+<td>Passer en mode configuration globale</td>
+</tr>
+<tr>
+<td><code>exit</code></td>
+<td>Quitter le mode actuel</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>Retourner au mode EXEC privilégié</td>
+</tr>
+<tr>
+<td><code>show running-config</code></td>
+<td>Afficher la configuration en cours</td>
+</tr>
+<tr>
+<td><code>show startup-config</code></td>
+<td>Afficher la configuration sauvegardée</td>
+</tr>
+<tr>
+<td><code>copy running-config startup-config</code></td>
+<td>Sauvegarder la configuration en cours</td>
+</tr>
+<tr>
+<td><code>reload</code></td>
+<td>Redémarrer l'appareil</td>
+</tr>
+<tr>
+<td><code>show version</code></td>
+<td>Afficher les informations sur le matériel et le logiciel</td>
+</tr>
+<tr>
+<td><code>show interface [interface]</code></td>
+<td>Afficher les informations sur une interface spécifique</td>
+</tr>
+<tr>
+<td><code>ping [adresse]</code></td>
+<td>Tester la connectivité réseau</td>
+</tr>
+<tr>
+<td><code>traceroute [adresse]</code></td>
+<td>Tracer le chemin vers une adresse</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="commandes-specifiques-aux-switchs">Commandes spécifiques aux Switchs</h2>
+<h3 id="configuration-de-base">Configuration de base</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vlan [numéro]</code></td>
+<td>Créer ou accéder à un VLAN spécifique</td>
+</tr>
+<tr>
+<td><code>name [nom]</code></td>
+<td>Donner un nom à un VLAN</td>
+</tr>
+<tr>
+<td><code>interface vlan [numéro]</code></td>
+<td>Accéder à l'interface d'un VLAN</td>
+</tr>
+<tr>
+<td><code>switchport mode access</code></td>
+<td>Configurer un port en mode accès</td>
+</tr>
+<tr>
+<td><code>switchport access vlan [numéro]</code></td>
+<td>Assigner un VLAN à un port en mode accès</td>
+</tr>
+<tr>
+<td><code>switchport mode trunk</code></td>
+<td>Configurer un port en mode trunk</td>
+</tr>
+<tr>
+<td><code>switchport trunk allowed vlan [numéros]</code></td>
+<td>Autoriser des VLANs spécifiques sur un trunk</td>
+</tr>
+<tr>
+<td><code>show vlan brief</code></td>
+<td>Afficher la liste des VLANs et leurs ports associés</td>
+</tr>
+<tr>
+<td><code>show interface trunk</code></td>
+<td>Afficher les informations sur les ports trunk</td>
+</tr>
+</tbody>
+</table>
+<h3 id="securite">Sécurité</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>switchport port-security</code></td>
+<td>Activer la sécurité sur un port</td>
+</tr>
+<tr>
+<td><code>switchport port-security maximum [nombre]</code></td>
+<td>Limiter le nombre d'adresses MAC autorisées sur un port</td>
+</tr>
+<tr>
+<td><code>switchport port-security mac-address [adresse]</code></td>
+<td>Assigner une adresse MAC spécifique à un port</td>
+</tr>
+<tr>
+<td><code>show port-security</code></td>
+<td>Afficher les informations sur la sécurité des ports</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="commandes-specifiques-aux-routeurs">Commandes spécifiques aux Routeurs</h2>
+<h3 id="configuration-de-base_1">Configuration de base</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interface [type] [numéro]</code></td>
+<td>Accéder à une interface spécifique</td>
+</tr>
+<tr>
+<td><code>ip address [adresse] [masque]</code></td>
+<td>Configurer une adresse IP sur une interface</td>
+</tr>
+<tr>
+<td><code>no shutdown</code></td>
+<td>Activer une interface</td>
+</tr>
+<tr>
+<td><code>ip route [réseau] [masque] [prochaine adresse]</code></td>
+<td>Ajouter une route statique</td>
+</tr>
+<tr>
+<td><code>show ip route</code></td>
+<td>Afficher la table de routage</td>
+</tr>
+<tr>
+<td><code>show ip interface brief</code></td>
+<td>Afficher un résumé des interfaces IP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="protocoles-de-routage">Protocoles de routage</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>router rip</code></td>
+<td>Activer le protocole RIP</td>
+</tr>
+<tr>
+<td><code>router ospf [ID]</code></td>
+<td>Activer le protocole OSPF</td>
+</tr>
+<tr>
+<td><code>network [adresse] [wildcard]</code></td>
+<td>Définir un réseau pour le protocole de routage</td>
+</tr>
+<tr>
+<td><code>show ip protocols</code></td>
+<td>Afficher les informations sur les protocoles de routage actifs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="commandes-avancees">Commandes avancées</h2>
+<h3 id="vlans-avances">VLANs avancés</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vlan database</code></td>
+<td>Accéder au mode de configuration des VLANs (obsolète sur certains modèles)</td>
+</tr>
+<tr>
+<td><code>vlan [numéro] name [nom]</code></td>
+<td>Créer un VLAN avec un nom spécifique</td>
+</tr>
+<tr>
+<td><code>vtp mode [client|server|transparent]</code></td>
+<td>Configurer le mode VTP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="routage-avance">Routage avancé</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ipv6 unicast-routing</code></td>
+<td>Activer le routage IPv6</td>
+</tr>
+<tr>
+<td><code>ipv6 address [adresse]/[préfixe]</code></td>
+<td>Configurer une adresse IPv6 sur une interface</td>
+</tr>
+<tr>
+<td><code>ipv6 route [réseau]/[préfixe] [prochaine adresse]</code></td>
+<td>Ajouter une route statique IPv6</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="commandes-de-depannage">Commandes de dépannage</h2>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>show cdp neighbors</code></td>
+<td>Afficher les voisins CDP</td>
+</tr>
+<tr>
+<td><code>show spanning-tree</code></td>
+<td>Afficher les informations sur le protocole STP</td>
+</tr>
+<tr>
+<td><code>debug ip rip</code></td>
+<td>Activer le débogage pour le protocole RIP</td>
+</tr>
+<tr>
+<td><code>debug ip ospf events</code></td>
+<td>Activer le débogage pour les événements OSPF</td>
+</tr>
+<tr>
+<td><code>show logging</code></td>
+<td>Afficher les logs système</td>
+</tr>
+<tr>
+<td><code>clear logging</code></td>
+<td>Effacer les logs système</td>
+</tr>
+<tr>
+<td><code>show mac address-table</code></td>
+<td>Afficher la table des adresses MAC</td>
+</tr>
+<tr>
+<td><code>show arp</code></td>
+<td>Afficher la table ARP</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copié dans le presse-papier","clipboard.copy":"Copier dans le presse-papier","search.result.more.one":"1 de plus sur cette page","search.result.more.other":"# de plus sur cette page","search.result.none":"Aucun document trouvé","search.result.one":"1 document trouvé","search.result.other":"# documents trouvés","search.result.placeholder":"Taper pour démarrer la recherche","search.result.term.missing":"Non trouvé","select.version":"Sélectionner la version"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.00c35305.min.js"></script>
+      
+    
+  </body>
+</html>
