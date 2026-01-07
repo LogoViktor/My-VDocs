@@ -1,3 +1,6 @@
+---
+title: "Configuration VLAN"
+---
 ## Configuration des VLANs sur le Serveur DHCP
 
 ### 1. Configuration du Switch

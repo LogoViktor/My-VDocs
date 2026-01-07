@@ -1,4 +1,6 @@
-
+---
+title: "SAMBA"
+---
 # Configuration de Samba
 
 Ce guide vous explique comment installer et configurer un serveur **Samba** sous Debian, ainsi que la configuration des partages et des utilisateurs.

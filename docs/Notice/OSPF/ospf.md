@@ -1,3 +1,6 @@
+---
+title: "OSPFv2"
+---
 # Configuration d'OSPFv2 (Déclaration par Interfaces)
 
 Ce guide vous explique comment configurer **OSPFv2** sur des routeurs en utilisant une **déclaration par interfaces**.

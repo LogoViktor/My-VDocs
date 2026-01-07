@@ -1,3 +1,6 @@
+---
+title: "OSPFv3"
+---
 # Configuration d'OSPFv3 (Déclaration par Interfaces)
 
 Ce guide vous explique comment configurer **OSPFv3** sur des routeurs en utilisant une **déclaration par interfaces**. OSPFv3 est la version d'OSPF conçue pour fonctionner avec **IPv6**.

@@ -1,3 +1,6 @@
+---
+title: "NFS"
+---
 # Configuration de NFS
 
 Ce guide vous explique comment installer et configurer un serveur **NFS** (Network File System) sous Debian, ainsi que la configuration du client pour accéder aux partages.

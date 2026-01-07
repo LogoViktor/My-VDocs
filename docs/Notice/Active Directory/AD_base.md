@@ -1,3 +1,6 @@
+---
+title: "Installation et configuration de base"
+---
 # Installation de Windows Server 2019 et du service Active Directory
 
 Ce guide vous explique comment installer **Windows Server 2019** et configurer le service **Active Directory** pour transformer votre serveur en contrôleur de domaine.

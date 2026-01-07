@@ -1,3 +1,6 @@
+---
+title: "PROXY SQUID"
+---
 # Configuration du Serveur Proxy Squid
 
 Ce guide vous explique comment installer, configurer et sécuriser un serveur proxy **Squid** sous Debian, incluant la gestion des ACL, l'authentification des utilisateurs et le filtrage avancé avec SquidGuard.

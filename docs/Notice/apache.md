@@ -1,3 +1,6 @@
+---
+title: "APACHE"
+---
 # Configuration d'Apache sous Debian
 
 Ce guide vous explique comment installer et configurer un serveur **Apache** sous Debian, y compris la gestion des Virtual Hosts basés sur l'IP.

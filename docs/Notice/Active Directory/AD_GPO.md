@@ -1,3 +1,6 @@
+---
+title: "GPO"
+---
 # Création de GPO et Tests
 
 Ce guide vous explique comment créer et configurer des **Stratégies de Groupe (GPO)** dans **Active Directory**, puis comment les tester.

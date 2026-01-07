@@ -1,3 +1,6 @@
+---
+title: "Installation et configuration de base"
+---
 # Configuration Serveur DHCP sous Debian
 
 ## Installation du serveur DHCP

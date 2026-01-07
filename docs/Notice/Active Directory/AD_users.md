@@ -1,3 +1,6 @@
+---
+title: "Utilisateurs et Groupes"
+---
 # Création des Utilisateurs, Groupes et OU dans Active Directory
 
 Ce guide vous explique comment créer des **utilisateurs**, des **groupes** et des **Organizational Units (OU)** dans **Active Directory**, ainsi que la procédure pour intégrer un poste au domaine.
