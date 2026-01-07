@@ -1,0 +1,117 @@
+# ============================================================================
+# Configuration de base pour Zensical - My VDocs
+# Auteur : Victor P. (LogoViktor)
+# ============================================================================
+
+[project]
+site_name = "My VDocs"
+site_description = "Documentation technique — DHCP, NFS, AD, Cisco, et plus"
+site_author = "Victor P."
+copyright = """
+Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+"""
+
+# ----------------------------------------------------------------------------
+# Configuration du thème
+# ----------------------------------------------------------------------------
+[project.theme]
+language = "fr"
+
+# 1. Palette SOMBRE (Par défaut)
+[[project.theme.palette]]
+scheme = "slate"
+primary = "blue"
+accent = "indigo"
+toggle.icon = "lucide/moon"
+toggle.name = "Passer en mode clair"
+
+# 2. Palette CLAIRE
+[[project.theme.palette]]
+scheme = "default"
+primary = "indigo"
+accent = "indigo"
+toggle.icon = "lucide/sun"
+toggle.name = "Passer en mode sombre"
+
+# ----------------------------------------------------------------------------
+# Fonctionnalités activées
+# ----------------------------------------------------------------------------
+features = [
+    "announce.dismiss",
+    "content.code.annotate",
+    "content.code.copy",
+    "content.footnote.tooltips",
+    "content.tabs.link",
+    "content.tooltips",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.path",
+    "navigation.sections",
+    "navigation.top",
+    "navigation.tracking",
+    "search.highlight",
+]
+
+# ----------------------------------------------------------------------------
+# Navigation du site
+# ----------------------------------------------------------------------------
+nav = [
+    { "Accueil" = "index.md" },
+    { "Notice" = [
+        { "DHCP" = [
+            { "Installation et configuration de base" = "Notice/DHCP/DHCP_base.md" },
+            { "Configuration VLAN" = "Notice/DHCP/DHCP_vlan.md" },
+        ]},
+        { "OSPF" = [
+            { "OSPF" = "Notice/OSPF/ospf.md" },
+            { "OSPFv3" = "Notice/OSPF/ospfv3.md" },
+        ]},
+        { "NFS / SAMBA" = [
+            { "NFS" = "Notice/NFS_SAMBA/nfs.md" },
+            { "SAMBA" = "Notice/NFS_SAMBA/samba.md" },
+        ]},
+        { "Apache" = "Notice/apache.md" },
+        { "Proxy Squid" = "Notice/proxysquid.md" },
+        { "Active Directory" = [
+            { "Installation et configuration de base" = "Notice/Active Directory/AD_base.md" },
+            { "Utilisateurs et Groupes" = "Notice/Active Directory/AD_users.md" },
+            { "GPO" = "Notice/Active Directory/AD_GPO.md" },
+        ]},
+    ]},
+    { "Guide" = [
+        { "Commandes Switch/Routeur Cisco" = "Guide/commande_de_base_cisco.md" },
+        { "Commandes Switch Alcatel" = "Guide/commandes_alcatel.md" },
+        { "Git / Github" = "Guide/git_github.md" },
+    ]},
+]
+
+# ----------------------------------------------------------------------------
+# Configuration pour le mode hors ligne
+# ----------------------------------------------------------------------------
+[project.plugins.offline]
+enabled = true
+
+# ----------------------------------------------------------------------------
+# Extensions Markdown (Configuration PyMdown)
+# ----------------------------------------------------------------------------
+
+# 1. Configuration du surlignage (Highlight)
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+line_spans = "__span"
+pygments_lang_class = true
+
+# 2. Surlignage en ligne
+[project.markdown_extensions.pymdownx.inlinehilite]
+
+# 3. Inclusion de fichiers externes (Snippets)
+[project.markdown_extensions.pymdownx.snippets]
+
+# 4. SuperFences (Essentiel pour les blocs de code complexes et bouton copie)
+[project.markdown_extensions.pymdownx.superfences]
+
+# 5. Admonition (C'est ce qui manquait pour afficher les blocs Info/Warning)
+[project.markdown_extensions.admonition]
+
+# 6. Details (Nécessaire pour les blocs qui se replient)
+[project.markdown_extensions.pymdownx.details]
