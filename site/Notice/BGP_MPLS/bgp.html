@@ -1,0 +1,2125 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique — DHCP, NFS, AD, Cisco, et plus">
+      
+      
+        <meta name="author" content="Victor P.">
+      
+      
+      
+        <link rel="prev" href="../Active%20Directory/AD_users.html">
+      
+      
+        <link rel="next" href="mpls.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.15">
+    
+    
+      
+        <title>BGP - My VDocs</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim" type="text/javascript"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guide-complet-configuration-et-debogage-bgp-incluant-les-routes-agregees" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../index.html" title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My VDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BGP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Recherche">
+  <button type="button" class="md-search__button">
+    Recherche
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    My VDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commande_de_base_cisco.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Switch/Routeur Cisco
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commandes_alcatel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Switch Alcatel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/git_github.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git / Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APACHE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxysquid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PROXY SQUID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_GPO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation et configuration de base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_users.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilisateurs et Groupes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BGP MPLS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BGP MPLS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BGP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="bgp.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuration-de-base-des-sessions-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 1. Configuration de Base des Sessions BGP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 1. Configuration de Base des Sessions BGP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-activer-le-processus-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Activer le processus BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-desactiver-lannonce-ipv4-par-defaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Désactiver l'annonce IPv4 par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-configurer-le-router-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Configurer le Router-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuration-des-sessions-ibgp-full-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 2. Configuration des Sessions iBGP (Full-Mesh)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 2. Configuration des Sessions iBGP (Full-Mesh)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-declarer-les-voisins-ibgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Déclarer les voisins iBGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-activer-laddress-family-ipv4ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Activer l'address-family IPv4/IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-des-sessions-ebgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 3. Configuration des Sessions eBGP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌍 3. Configuration des Sessions eBGP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-declarer-les-voisins-ebgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Déclarer les voisins eBGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-activer-laddress-family-ipv4ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Activer l'address-family IPv4/IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-annonces-de-routes-bgp-routes-agregees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 3.2. Annonces de Routes BGP (Routes Agrégées)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 3.2. Annonces de Routes BGP (Routes Agrégées)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectif
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#321-sur-r2-as123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1. Sur R2 (AS123)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.1. Sur R2 (AS123)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-des-routes-statiques-vers-null0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer des routes statiques vers Null0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importer-les-routes-dans-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importer les routes dans BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-sur-r7-as4652" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2. Sur R7 (AS4652)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.2. Sur R7 (AS4652)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-des-routes-statiques-vers-null0_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer des routes statiques vers Null0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importer-les-routes-dans-bgp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importer les routes dans BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-verification-et-debogage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 4. Vérification et Débogage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 4. Vérification et Débogage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-verifier-letat-des-sessions-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Vérifier l'état des sessions BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-afficher-les-routes-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Afficher les routes BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-verifier-la-table-de-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Vérifier la table de routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-tester-la-connectivite-entre-pc1-et-pc2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Tester la connectivité entre PC1 et PC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-commandes-de-debogage-avance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐞 5. Commandes de Débogage Avancé
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bonnes-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 6. Bonnes Pratiques
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple-de-configuration-complete-r2-as123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📄 Exemple de Configuration Complète (R2 - AS123)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mpls.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MPLS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation et configuration de base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_vlan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration VLAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS SAMBA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NFS SAMBA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/nfs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/samba.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAMBA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSPF/ospf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPFv2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSPF/ospfv3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPFv3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-configuration-de-base-des-sessions-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 1. Configuration de Base des Sessions BGP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 1. Configuration de Base des Sessions BGP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-activer-le-processus-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Activer le processus BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-desactiver-lannonce-ipv4-par-defaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Désactiver l'annonce IPv4 par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-configurer-le-router-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Configurer le Router-ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuration-des-sessions-ibgp-full-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 2. Configuration des Sessions iBGP (Full-Mesh)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 2. Configuration des Sessions iBGP (Full-Mesh)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-declarer-les-voisins-ibgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Déclarer les voisins iBGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-activer-laddress-family-ipv4ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Activer l'address-family IPv4/IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-des-sessions-ebgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌍 3. Configuration des Sessions eBGP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌍 3. Configuration des Sessions eBGP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-declarer-les-voisins-ebgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Déclarer les voisins eBGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-activer-laddress-family-ipv4ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Activer l'address-family IPv4/IPv6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-annonces-de-routes-bgp-routes-agregees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📦 3.2. Annonces de Routes BGP (Routes Agrégées)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 3.2. Annonces de Routes BGP (Routes Agrégées)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectif
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#321-sur-r2-as123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1. Sur R2 (AS123)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.1. Sur R2 (AS123)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-des-routes-statiques-vers-null0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer des routes statiques vers Null0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importer-les-routes-dans-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importer les routes dans BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-sur-r7-as4652" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2. Sur R7 (AS4652)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2.2. Sur R7 (AS4652)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creer-des-routes-statiques-vers-null0_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer des routes statiques vers Null0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importer-les-routes-dans-bgp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importer les routes dans BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-verification-et-debogage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 4. Vérification et Débogage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 4. Vérification et Débogage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-verifier-letat-des-sessions-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Vérifier l'état des sessions BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-afficher-les-routes-bgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Afficher les routes BGP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-verifier-la-table-de-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Vérifier la table de routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-tester-la-connectivite-entre-pc1-et-pc2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Tester la connectivité entre PC1 et PC2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-commandes-de-debogage-avance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐞 5. Commandes de Débogage Avancé
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bonnes-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 6. Bonnes Pratiques
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple-de-configuration-complete-r2-as123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📄 Exemple de Configuration Complète (R2 - AS123)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="guide-complet-configuration-et-debogage-bgp-incluant-les-routes-agregees"><strong>Guide Complet : Configuration et Débogage BGP (incluant les routes agrégées)</strong></h1>
+<hr />
+<h2 id="prerequis">📋 <strong>Prérequis</strong></h2>
+<ul>
+<li>Routeurs Cisco configurés pour IPv4/IPv6.</li>
+<li>Topologie réseau entre AS123 et AS4652.</li>
+<li>Accès CLI aux routeurs (R2, R7, etc.).</li>
+<li>Connaissances de base en BGP et routage statique.</li>
+</ul>
+<hr />
+<h2 id="1-configuration-de-base-des-sessions-bgp">🌐 <strong>1. Configuration de Base des Sessions BGP</strong></h2>
+<h3 id="11-activer-le-processus-bgp"><strong>1.1. Activer le processus BGP</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Router&gt;<span class="w"> </span><span class="nb">enable</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Router#<span class="w"> </span>configure<span class="w"> </span>terminal
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># router bgp &lt;AS_NUMBER&gt;</span>
+</span></code></pre></div>
+- Remplacez <code>&lt;AS_NUMBER&gt;</code> par le numéro d'AS local (ex: <code>123</code> pour AS123, <code>4652</code> pour AS4652).</p>
+<hr />
+<h3 id="12-desactiver-lannonce-ipv4-par-defaut"><strong>1.2. Désactiver l'annonce IPv4 par défaut</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># no bgp default ipv4-unicast</span>
+</span></code></pre></div>
+- <strong>Pourquoi ?</strong> Pour éviter l'annonce automatique des routes IPv4 non désirées.</p>
+<hr />
+<h3 id="13-configurer-le-router-id"><strong>1.3. Configurer le Router-ID</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># bgp router-id &lt;IP_LOOPBACK&gt;</span>
+</span></code></pre></div>
+- Utilisez l'IP de la Loopback0 (ex: <code>192.168.1.1</code>).</p>
+<hr />
+<h2 id="2-configuration-des-sessions-ibgp-full-mesh">🔄 <strong>2. Configuration des Sessions iBGP (Full-Mesh)</strong></h2>
+<h3 id="21-declarer-les-voisins-ibgp"><strong>2.1. Déclarer les voisins iBGP</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># neighbor &lt;IP_LOOPBACK_VOISIN&gt; remote-as &lt;AS_NUMBER&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># neighbor &lt;IP_LOOPBACK_VOISIN&gt; update-source Loopback0</span>
+</span></code></pre></div>
+- <strong>Exemple pour R2 (AS123)</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>neighbor<span class="w"> </span><span class="m">192</span>.168.2.2<span class="w"> </span>remote-as<span class="w"> </span><span class="m">123</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>neighbor<span class="w"> </span><span class="m">192</span>.168.2.2<span class="w"> </span>update-source<span class="w"> </span>Loopback0
+</span></code></pre></div></p>
+<h3 id="22-activer-laddress-family-ipv4ipv6"><strong>2.2. Activer l'address-family IPv4/IPv6</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># address-family ipv4</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># neighbor &lt;IP_LOOPBACK_VOISIN&gt; activate</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># exit-address-family</span>
+</span></code></pre></div>
+- Répétez pour IPv6 si nécessaire.</p>
+<hr />
+<h2 id="3-configuration-des-sessions-ebgp">🌍 <strong>3. Configuration des Sessions eBGP</strong></h2>
+<h3 id="31-declarer-les-voisins-ebgp"><strong>3.1. Déclarer les voisins eBGP</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># neighbor &lt;IP_INTERCONNEXION&gt; remote-as &lt;AS_VOISIN&gt;</span>
+</span></code></pre></div>
+- <strong>Exemple pour R2 (AS123) vers R7 (AS4652)</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>neighbor<span class="w"> </span><span class="m">10</span>.0.0.7<span class="w"> </span>remote-as<span class="w"> </span><span class="m">4652</span>
+</span></code></pre></div></p>
+<h3 id="32-activer-laddress-family-ipv4ipv6"><strong>3.2. Activer l'address-family IPv4/IPv6</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># address-family ipv4</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># neighbor &lt;IP_INTERCONNEXION&gt; activate</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># exit-address-family</span>
+</span></code></pre></div>
+- Répétez pour IPv6.</p>
+<hr />
+<h2 id="32-annonces-de-routes-bgp-routes-agregees">📦 <strong>3.2. Annonces de Routes BGP (Routes Agrégées)</strong></h2>
+<h3 id="objectif"><strong>Objectif</strong></h3>
+<p>Les AS <strong>123</strong> et <strong>4652</strong> annoncent uniquement des <strong>routes agrégées</strong> (pas de détail du réseau interne).</p>
+<hr />
+<h3 id="321-sur-r2-as123"><strong>3.2.1. Sur R2 (AS123)</strong></h3>
+<h4 id="creer-des-routes-statiques-vers-null0"><strong>Créer des routes statiques vers Null0</strong></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># ip route 212.51.160.0 255.255.224.0 Null0</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># ipv6 route 2001:db8::/36 Null0</span>
+</span></code></pre></div>
+<h4 id="importer-les-routes-dans-bgp"><strong>Importer les routes dans BGP</strong></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># address-family ipv4</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># network 212.51.160.0 mask 255.255.224.0</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># exit-address-family</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># address-family ipv6</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># network 2001:db8::/36</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># exit-address-family</span>
+</span></code></pre></div>
+<hr />
+<h3 id="322-sur-r7-as4652"><strong>3.2.2. Sur R7 (AS4652)</strong></h3>
+<h4 id="creer-des-routes-statiques-vers-null0_1"><strong>Créer des routes statiques vers Null0</strong></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># ip route 198.51.100.0 255.255.255.0 Null0</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Router<span class="o">(</span>config<span class="o">)</span><span class="c1"># ipv6 route 2001:db8:2::/48 Null0</span>
+</span></code></pre></div>
+<h4 id="importer-les-routes-dans-bgp_1"><strong>Importer les routes dans BGP</strong></h4>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># address-family ipv4</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># network 198.51.100.0 mask 255.255.255.0</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># exit-address-family</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Router<span class="o">(</span>config-router<span class="o">)</span><span class="c1"># address-family ipv6</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># network 2001:db8:2::/48</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>Router<span class="o">(</span>config-router-af<span class="o">)</span><span class="c1"># exit-address-family</span>
+</span></code></pre></div>
+<hr />
+<h2 id="4-verification-et-debogage">🔍 <strong>4. Vérification et Débogage</strong></h2>
+<h3 id="41-verifier-letat-des-sessions-bgp"><strong>4.1. Vérifier l'état des sessions BGP</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Router#<span class="w"> </span>show<span class="w"> </span>bgp<span class="w"> </span>summary
+</span></code></pre></div>
+- <strong>À vérifier</strong> :
+  - Les sessions doivent être <strong>établies</strong> (colonne "State" = nombre, ex: <code>0</code>).
+  - Si une session est en <code>Idle</code> ou <code>Active</code>, vérifiez la connectivité réseau.</p>
+<hr />
+<h3 id="42-afficher-les-routes-bgp"><strong>4.2. Afficher les routes BGP</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Router#<span class="w"> </span>show<span class="w"> </span>bgp<span class="w"> </span>ipv4<span class="w"> </span>unicast
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Router#<span class="w"> </span>show<span class="w"> </span>bgp<span class="w"> </span>ipv6<span class="w"> </span>unicast
+</span></code></pre></div>
+- <strong>À vérifier</strong> :
+  - Les routes agrégées (<code>212.51.160.0/19</code>, <code>198.51.100.0/24</code>, <code>2001:db8::/36</code>, <code>2001:db8:2::/48</code>) sont-elles présentes ?</p>
+<hr />
+<h3 id="43-verifier-la-table-de-routage"><strong>4.3. Vérifier la table de routage</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Router#<span class="w"> </span>show<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>bgp
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>Router#<span class="w"> </span>show<span class="w"> </span>ipv6<span class="w"> </span>route<span class="w"> </span>bgp
+</span></code></pre></div>
+- <strong>À vérifier</strong> :
+  - Les routes BGP sont-elles installées dans la table de routage ?</p>
+<hr />
+<h3 id="44-tester-la-connectivite-entre-pc1-et-pc2"><strong>4.4. Tester la connectivité entre PC1 et PC2</strong></h3>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>PC1&gt;<span class="w"> </span>ping<span class="w"> </span><span class="m">198</span>.51.100.1
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>PC1&gt;<span class="w"> </span>ping<span class="w"> </span><span class="m">2001</span>:db8:2::1
+</span></code></pre></div>
+- <strong>Si la connectivité échoue</strong> :
+  - Vérifiez les routes avec <code>show ip route</code> et <code>show ipv6 route</code>.
+  - Utilisez <code>traceroute</code> pour identifier où le trafic est bloqué.
+  - Activez le débogage BGP :
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Router#<span class="w"> </span>debug<span class="w"> </span>ip<span class="w"> </span>bgp<span class="w"> </span>updates
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Router#<span class="w"> </span>debug<span class="w"> </span>ipv6<span class="w"> </span>bgp<span class="w"> </span>updates
+</span></code></pre></div></p>
+<hr />
+<h2 id="5-commandes-de-debogage-avance">🐞 <strong>5. Commandes de Débogage Avancé</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Problème</strong></th>
+<th><strong>Commande de Débogage</strong></th>
+<th><strong>Solution Possible</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Session BGP en <code>Idle</code></td>
+<td><code>debug ip bgp</code></td>
+<td>Vérifiez la connectivité (<code>ping</code>, <code>traceroute</code>).</td>
+</tr>
+<tr>
+<td>Pas de routes reçues</td>
+<td><code>show ip bgp neighbors</code></td>
+<td>Vérifiez les filtres (<code>prefix-list</code>, <code>route-map</code>).</td>
+</tr>
+<tr>
+<td>Routes non installées</td>
+<td><code>show ip route bgp</code></td>
+<td>Vérifiez la politique de routage (<code>show running-config</code>).</td>
+</tr>
+<tr>
+<td>Erreur <code>Hold Time expired</code></td>
+<td><code>show bgp neighbors</code></td>
+<td>Ajustez les timers : <code>neighbor &lt;IP&gt; timers 30 90</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-bonnes-pratiques">📌 <strong>6. Bonnes Pratiques</strong></h2>
+<ul>
+<li><strong>Utilisez des Loopbacks</strong> pour les sessions iBGP (stabilité).</li>
+<li><strong>Filtrez les routes</strong> avec des <code>prefix-lists</code> pour éviter les fuites.</li>
+<li><strong>Documentation</strong> : Notez les configurations et les changements.</li>
+<li><strong>Testez la connectivité</strong> après chaque modification.</li>
+</ul>
+<hr />
+<h2 id="exemple-de-configuration-complete-r2-as123">📄 <strong>Exemple de Configuration Complète (R2 - AS123)</strong></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>router<span class="w"> </span>bgp<span class="w"> </span><span class="m">123</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w"> </span>no<span class="w"> </span>bgp<span class="w"> </span>default<span class="w"> </span>ipv4-unicast
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w"> </span>bgp<span class="w"> </span>router-id<span class="w"> </span><span class="m">192</span>.168.1.2
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w"> </span>neighbor<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span>remote-as<span class="w"> </span><span class="m">123</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w"> </span>neighbor<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span>update-source<span class="w"> </span>Loopback0
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w"> </span>neighbor<span class="w"> </span><span class="m">10</span>.0.0.7<span class="w"> </span>remote-as<span class="w"> </span><span class="m">4652</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w"> </span>!
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w"> </span>address-family<span class="w"> </span>ipv4
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">  </span>network<span class="w"> </span><span class="m">212</span>.51.160.0<span class="w"> </span>mask<span class="w"> </span><span class="m">255</span>.255.224.0
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">  </span>neighbor<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span>activate
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">  </span>neighbor<span class="w"> </span><span class="m">10</span>.0.0.7<span class="w"> </span>activate
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w"> </span>!
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w"> </span>address-family<span class="w"> </span>ipv6
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">  </span>network<span class="w"> </span><span class="m">2001</span>:db8::/36
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">  </span>neighbor<span class="w"> </span><span class="m">192</span>.168.1.1<span class="w"> </span>activate
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">  </span>neighbor<span class="w"> </span><span class="m">10</span>.0.0.7<span class="w"> </span>activate
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w"> </span>exit-address-family
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copié dans le presse-papier","clipboard.copy":"Copier dans le presse-papier","search.result.more.one":"1 de plus sur cette page","search.result.more.other":"# de plus sur cette page","search.result.none":"Aucun document trouvé","search.result.one":"1 document trouvé","search.result.other":"# documents trouvés","search.result.placeholder":"Taper pour démarrer la recherche","search.result.term.missing":"Non trouvé","select.version":"Sélectionner la version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -70,6 +70,10 @@ nav = [
             { "NFS" = "Notice/NFS_SAMBA/nfs.md" },
             { "SAMBA" = "Notice/NFS_SAMBA/samba.md" },
         ]},
+        { "BGP/MPLS" = [
+            { "BGP" = "Notice/BGP_MPLS/bgp.md" },
+            { "MPLS" = "Notice/BGP_MPLS/mpls.md" },
+        ]},
         { "Apache" = "Notice/apache.md" },
         { "Proxy Squid" = "Notice/proxysquid.md" },
         { "Active Directory" = [

@@ -1,0 +1,2581 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation technique — DHCP, NFS, AD, Cisco, et plus">
+      
+      
+        <meta name="author" content="Victor P.">
+      
+      
+      
+        <link rel="prev" href="bgp.html">
+      
+      
+        <link rel="next" href="../DHCP/DHCP_base.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.15">
+    
+    
+      
+        <title>MPLS - My VDocs</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim" type="text/javascript"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-et-debogage-de-mpls-ldp-l3vpn-ipv4-et-l2vpn" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../index.html" title="My VDocs" class="md-header__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My VDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MPLS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Passer en mode clair"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer en mode clair" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Passer en mode sombre"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer en mode sombre" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Recherche">
+  <button type="button" class="md-search__button">
+    Recherche
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="My VDocs" class="md-nav__button md-logo" aria-label="My VDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    My VDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commande_de_base_cisco.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Switch/Routeur Cisco
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/commandes_alcatel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commandes Switch Alcatel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Guide/git_github.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git / Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apache.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APACHE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxysquid.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PROXY SQUID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Active Directory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Active Directory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_GPO.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation et configuration de base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Active%20Directory/AD_users.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilisateurs et Groupes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BGP MPLS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    BGP MPLS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bgp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MPLS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="mpls.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MPLS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuration-de-mpls-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuration de MPLS LDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuration de MPLS LDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-pourquoi-configurer-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Pourquoi configurer LDP ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configuration-de-base-de-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Configuration de base de LDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Configuration de base de LDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-le-lsr-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Définir le LSR ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-activer-mpls-sur-les-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Activer MPLS sur les interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verifier-les-voisins-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vérifier les voisins LDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-etude-des-loopbacks-et-des-labels-mpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Étude des Loopbacks et des Labels MPLS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Étude des Loopbacks et des Labels MPLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-capturer-les-paquets-entre-p1-et-p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Capturer les paquets entre P1 et P2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-analyser-les-paquets-icmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Analyser les paquets ICMP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-afficher-la-table-des-labels-sur-p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Afficher la table des labels sur P2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-de-l3vpn-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuration de L3VPN IPv4
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuration de L3VPN IPv4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pourquoi-configurer-un-l3vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Pourquoi configurer un L3VPN ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-activation-de-laddress-family-vpnv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Activation de l’address-family VPNv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-creation-des-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Création des VRF
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Création des VRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-les-vrf-sur-les-pe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Définir les VRF sur les PE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-associer-les-interfaces-pe-ce-aux-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Associer les interfaces PE-CE aux VRF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-routage-dans-les-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Routage dans les VRF
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Routage dans les VRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-propager-les-routes-connectees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Propager les routes connectées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-routage-pe-ce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Routage PE-CE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5. Routage PE-CE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vrf-rouge-routes-statiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. VRF Rouge (Routes statiques)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vrf-verte-ebgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. VRF Verte (eBGP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-service-internet-pour-le-vpn-mpls-rouge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Service Internet pour le VPN MPLS « Rouge »
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Service Internet pour le VPN MPLS « Rouge »">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-pourquoi-un-multi-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Pourquoi un multi-service ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-configuration-du-multi-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Configuration du multi-service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2. Configuration du multi-service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creer-des-sous-interfaces-vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Créer des sous-interfaces VLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-reconfiguration-du-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Reconfiguration du routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-activation-du-nat-sur-ce1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Activation du NAT sur CE1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-service-l2vpn-point-a-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Service L2VPN Point à Point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Service L2VPN Point à Point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-pourquoi-un-l2vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Pourquoi un L2VPN ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configuration-du-l2vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Configuration du L2VPN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. Configuration du L2VPN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-activer-les-ports-eth03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Activer les ports eth0/3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurer-le-service-l2vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurer le service L2VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-commandes-de-debogage-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Commandes de Débogage Utiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Commandes de Débogage Utiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-debogage-ldp-et-mpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Débogage LDP et MPLS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-debogage-bgp-et-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Débogage BGP et VRF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DHCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DHCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation et configuration de base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DHCP/DHCP_vlan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration VLAN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS SAMBA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NFS SAMBA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/nfs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NFS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NFS_SAMBA/samba.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SAMBA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPF
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSPF
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSPF/ospf.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPFv2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../OSPF/ospfv3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSPFv3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuration-de-mpls-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuration de MPLS LDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuration de MPLS LDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-pourquoi-configurer-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Pourquoi configurer LDP ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configuration-de-base-de-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Configuration de base de LDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2. Configuration de base de LDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-le-lsr-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Définir le LSR ID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-activer-mpls-sur-les-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Activer MPLS sur les interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-verifier-les-voisins-ldp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vérifier les voisins LDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-etude-des-loopbacks-et-des-labels-mpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Étude des Loopbacks et des Labels MPLS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Étude des Loopbacks et des Labels MPLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-capturer-les-paquets-entre-p1-et-p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Capturer les paquets entre P1 et P2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-analyser-les-paquets-icmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Analyser les paquets ICMP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-afficher-la-table-des-labels-sur-p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Afficher la table des labels sur P2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuration-de-l3vpn-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuration de L3VPN IPv4
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuration de L3VPN IPv4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pourquoi-configurer-un-l3vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Pourquoi configurer un L3VPN ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-activation-de-laddress-family-vpnv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Activation de l’address-family VPNv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-creation-des-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Création des VRF
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Création des VRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definir-les-vrf-sur-les-pe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Définir les VRF sur les PE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-associer-les-interfaces-pe-ce-aux-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Associer les interfaces PE-CE aux VRF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-routage-dans-les-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Routage dans les VRF
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Routage dans les VRF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-propager-les-routes-connectees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Propager les routes connectées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-routage-pe-ce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Routage PE-CE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5. Routage PE-CE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vrf-rouge-routes-statiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. VRF Rouge (Routes statiques)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vrf-verte-ebgp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. VRF Verte (eBGP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-service-internet-pour-le-vpn-mpls-rouge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Service Internet pour le VPN MPLS « Rouge »
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Service Internet pour le VPN MPLS « Rouge »">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-pourquoi-un-multi-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Pourquoi un multi-service ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-configuration-du-multi-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Configuration du multi-service
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2. Configuration du multi-service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creer-des-sous-interfaces-vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Créer des sous-interfaces VLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-reconfiguration-du-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Reconfiguration du routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-activation-du-nat-sur-ce1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Activation du NAT sur CE1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-service-l2vpn-point-a-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Service L2VPN Point à Point
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Service L2VPN Point à Point">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-pourquoi-un-l2vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Pourquoi un L2VPN ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-configuration-du-l2vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Configuration du L2VPN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. Configuration du L2VPN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-activer-les-ports-eth03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Activer les ports eth0/3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configurer-le-service-l2vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configurer le service L2VPN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-commandes-de-debogage-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Commandes de Débogage Utiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Commandes de Débogage Utiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-debogage-ldp-et-mpls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Débogage LDP et MPLS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-debogage-bgp-et-vrf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Débogage BGP et VRF
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="configuration-et-debogage-de-mpls-ldp-l3vpn-ipv4-et-l2vpn"><strong>Configuration et Débogage de MPLS : LDP, L3VPN IPv4 et L2VPN</strong></h1>
+<hr />
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p>Ce guide vous explique <strong>pourquoi</strong> et <strong>comment</strong> configurer <strong>MPLS LDP</strong>, <strong>L3VPN IPv4</strong>, et <strong>L2VPN</strong> sur des routeurs Cisco. Chaque section inclut :
+- <strong>Le contexte</strong> : Pourquoi cette étape est nécessaire.
+- <strong>Les commandes</strong> : Comment la configurer.
+- <strong>Les vérifications</strong> : Comment s’assurer que cela fonctionne.
+- <strong>Le débogage</strong> : Que faire si cela ne fonctionne pas.</p>
+<hr />
+<h2 id="2-configuration-de-mpls-ldp"><strong>2. Configuration de MPLS LDP</strong></h2>
+<h3 id="21-pourquoi-configurer-ldp"><strong>2.1. Pourquoi configurer LDP ?</strong></h3>
+<p><strong>LDP (Label Distribution Protocol)</strong> est utilisé pour échanger des <strong>labels MPLS</strong> entre les routeurs. Sans LDP, les routeurs ne peuvent pas établir de <strong>LSP (Label Switched Path)</strong>, et le trafic MPLS ne peut pas être acheminé.</p>
+<hr />
+<h3 id="22-configuration-de-base-de-ldp"><strong>2.2. Configuration de base de LDP</strong></h3>
+<h4 id="1-definir-le-lsr-id"><strong>1. Définir le LSR ID</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Le <strong>LSR ID</strong> (Label Switch Router Identifier) identifie de manière unique un routeur dans le domaine MPLS. Il est généralement défini comme l’adresse de la <strong>loopback 0</strong>, car celle-ci est stable et toujours disponible.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mpls<span class="w"> </span>ldp<span class="w"> </span>router-id<span class="w"> </span>loopback0<span class="w"> </span>force
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>end
+</span></code></pre></div></p>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>show<span class="w"> </span>mpls<span class="w"> </span>ldp<span class="w"> </span>parameters
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> Le champ <code>LSR ID</code> doit afficher l’adresse de votre loopback 0.</p>
+<hr />
+<h4 id="2-activer-mpls-sur-les-interfaces"><strong>2. Activer MPLS sur les interfaces</strong></h4>
+<p><strong>Pourquoi ?</strong>
+MPLS doit être activé sur les interfaces qui transportent le trafic MPLS. Sans cette activation, les paquets IP ne seront pas encapsulés avec des labels MPLS.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>interface<span class="w"> </span>GigabitEthernet0/0
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w"> </span>mpls<span class="w"> </span>ip
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>end
+</span></code></pre></div></p>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>show<span class="w"> </span>mpls<span class="w"> </span>interface
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> L’interface doit apparaître dans la liste avec <code>enabled</code> à <code>yes</code>.</p>
+<hr />
+<h4 id="3-verifier-les-voisins-ldp"><strong>3. Vérifier les voisins LDP</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les voisins LDP doivent être établis pour que les routeurs puissent échanger des labels. Sans voisins LDP, aucun LSP ne peut être créé.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>show<span class="w"> </span>mpls<span class="w"> </span>ldp<span class="w"> </span>neighbor
+</span></code></pre></div></p>
+<ul>
+<li><strong>Que vérifier ?</strong></li>
+<li>L’état (<code>State</code>) doit être <code>Operational</code>.</li>
+<li>Le nombre de messages envoyés/reçus (<code>MsgSent/MsgRcvd</code>) doit augmenter.</li>
+</ul>
+<p><strong>Débogage :</strong>
+Si les voisins ne s’établissent pas :
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>debug<span class="w"> </span>mpls<span class="w"> </span>ldp<span class="w"> </span>all
+</span></code></pre></div>
+- <strong>Que faire ?</strong> Vérifiez la connectivité IP entre les routeurs et assurez-vous que LDP est activé sur les deux côtés.</p>
+<hr />
+<h3 id="23-etude-des-loopbacks-et-des-labels-mpls"><strong>2.3. Étude des Loopbacks et des Labels MPLS</strong></h3>
+<h4 id="1-capturer-les-paquets-entre-p1-et-p2"><strong>1. Capturer les paquets entre P1 et P2</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Cela permet de visualiser comment les labels MPLS sont ajoutés et retirés des paquets lors de leur transit dans le réseau MPLS.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>monitor<span class="w"> </span>capture<span class="w"> </span>buffer<span class="w"> </span>P1P2<span class="w"> </span>size<span class="w"> </span><span class="m">1000</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>monitor<span class="w"> </span>capture<span class="w"> </span>point<span class="w"> </span>ip<span class="w"> </span>cef<span class="w"> </span>P1P2<span class="w"> </span>GigabitEthernet0/0<span class="w"> </span>both
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>monitor<span class="w"> </span>capture<span class="w"> </span>start<span class="w"> </span>P1P2
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>ping<span class="w"> </span>&lt;adresse_IP_loopback_PE_voisin&gt;
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>monitor<span class="w"> </span>capture<span class="w"> </span>stop<span class="w"> </span>P1P2
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>show<span class="w"> </span>monitor<span class="w"> </span>capture<span class="w"> </span>buffer<span class="w"> </span>P1P2<span class="w"> </span>dump
+</span></code></pre></div></p>
+<hr />
+<h4 id="2-analyser-les-paquets-icmp"><strong>2. Analyser les paquets ICMP</strong></h4>
+<p><strong>Pourquoi ?</strong>
+- <strong>Echo Request</strong> : Contient <strong>2 labels</strong> (un label de transport pour le routage dans le cœur MPLS, et un label de service pour identifier le trafic spécifique au VPN).
+- <strong>Echo Reply</strong> : Contient <strong>1 label</strong> (seulement le label de transport, car le trafic de retour est déjà identifié par le routeur de destination).</p>
+<p><strong>Explication :</strong>
+Les labels MPLS sont utilisés pour <strong>acheminer le trafic</strong> sans avoir besoin d’analyser l’en-tête IP à chaque saut. Le label de service est retiré par le dernier routeur (PE) avant que le paquet ne quitte le réseau MPLS.</p>
+<hr />
+<h4 id="3-afficher-la-table-des-labels-sur-p2"><strong>3. Afficher la table des labels sur P2</strong></h4>
+<p><strong>Pourquoi ?</strong>
+La table des labels montre comment les paquets sont <strong>étiquetés</strong> et <strong>acheminés</strong> à travers le réseau.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>show<span class="w"> </span>mpls<span class="w"> </span>forwarding-table
+</span></code></pre></div></p>
+<ul>
+<li><strong>Que vérifier ?</strong></li>
+<li><code>Local Label</code> : Le label que P2 utilise pour recevoir des paquets.</li>
+<li><code>Outgoing Label</code> : Le label que P2 utilise pour envoyer des paquets.</li>
+<li><code>Next Hop</code> : L’adresse IP du prochain saut.</li>
+</ul>
+<hr />
+<h2 id="3-configuration-de-l3vpn-ipv4"><strong>3. Configuration de L3VPN IPv4</strong></h2>
+<h3 id="31-pourquoi-configurer-un-l3vpn"><strong>3.1. Pourquoi configurer un L3VPN ?</strong></h3>
+<p>Un <strong>L3VPN</strong> permet de créer des <strong>réseaux privés virtuels</strong> (VPN) au niveau de la couche 3 (IP). Cela isole le trafic entre différents clients ou services sur une même infrastructure physique.</p>
+<hr />
+<h3 id="32-activation-de-laddress-family-vpnv4"><strong>3.2. Activation de l’address-family VPNv4</strong></h3>
+<p><strong>Pourquoi ?</strong>
+L’<strong>address-family VPNv4</strong> permet aux routeurs PE d’échanger des routes <strong>spécifiques aux VRF</strong> via BGP. Sans cela, les routes des VPN ne peuvent pas être propagées.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>router<span class="w"> </span>bgp<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span>neighbor<span class="w"> </span>&lt;adresse_IP_PE_voisin&gt;<span class="w"> </span>remote-as<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w"> </span>!
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w"> </span>address-family<span class="w"> </span>vpnv4
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>neighbor<span class="w"> </span>&lt;adresse_IP_PE_voisin&gt;<span class="w"> </span>activate
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>end
+</span></code></pre></div></p>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>show<span class="w"> </span>bgp<span class="w"> </span>vpnv4<span class="w"> </span>unicast<span class="w"> </span>all<span class="w"> </span>summary
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> La colonne <code>State/PfxRcd</code> doit indiquer un nombre de préfixes reçus.</p>
+<hr />
+<h3 id="33-creation-des-vrf"><strong>3.3. Création des VRF</strong></h3>
+<h4 id="1-definir-les-vrf-sur-les-pe"><strong>1. Définir les VRF sur les PE</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les <strong>VRF (Virtual Routing and Forwarding)</strong> permettent de créer des tables de routage <strong>isolées</strong> pour chaque VPN. Chaque VRF a :
+- Un <strong>RD (Route Distinguisher)</strong> : Pour rendre les routes uniques.
+- Un <strong>Route-Target</strong> : Pour contrôler l’import/export des routes entre les VRF.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ip<span class="w"> </span>vrf<span class="w"> </span>RED
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w"> </span>rd<span class="w"> </span><span class="m">10</span>:10
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w"> </span>route-target<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="m">10</span>:10
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w"> </span>route-target<span class="w"> </span>import<span class="w"> </span><span class="m">10</span>:10
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nb">exit</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>ip<span class="w"> </span>vrf<span class="w"> </span>GREEN
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w"> </span>rd<span class="w"> </span><span class="m">10</span>:20
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w"> </span>route-target<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="m">10</span>:20
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w"> </span>route-target<span class="w"> </span>import<span class="w"> </span><span class="m">10</span>:20
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nb">exit</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>end
+</span></code></pre></div></p>
+<p><strong>Explication :</strong>
+- <strong>RD 10:10</strong> : Rend les routes de la VRF <code>RED</code> uniques.
+- <strong>Route-Target 10:10</strong> : Permet aux routeurs PE d’échanger les routes de la VRF <code>RED</code>.</p>
+<hr />
+<h4 id="2-associer-les-interfaces-pe-ce-aux-vrf"><strong>2. Associer les interfaces PE-CE aux VRF</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les interfaces <strong>PE-CE</strong> doivent être associées à une VRF pour que le trafic soit correctement isolé et routé.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>interface<span class="w"> </span>GigabitEthernet0/0
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w"> </span>ip<span class="w"> </span>vrf<span class="w"> </span>forwarding<span class="w"> </span>RED
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>&lt;adresse_IP&gt;<span class="w"> </span>&lt;masque&gt;
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w"> </span>no<span class="w"> </span>shutdown
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nb">exit</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>end
+</span></code></pre></div></p>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>show<span class="w"> </span>ip<span class="w"> </span>vrf<span class="w"> </span>interfaces
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> L’interface doit apparaître dans la liste avec la VRF correcte.</p>
+<hr />
+<h3 id="34-routage-dans-les-vrf"><strong>3.4. Routage dans les VRF</strong></h3>
+<h4 id="1-propager-les-routes-connectees"><strong>1. Propager les routes connectées</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les routes <strong>directement connectées</strong> (comme les réseaux des CE) doivent être propagées dans la VRF pour que les autres PE puissent les apprendre.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>router<span class="w"> </span>bgp<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w"> </span>!
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w"> </span>address-family<span class="w"> </span>ipv4<span class="w"> </span>vrf<span class="w"> </span>RED
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span>redistribute<span class="w"> </span>connected
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>end
+</span></code></pre></div></p>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>show<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>vrf<span class="w"> </span>RED
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> Les routes connectées doivent apparaître avec le code <code>C</code>.</p>
+<hr />
+<h3 id="35-routage-pe-ce"><strong>3.5. Routage PE-CE</strong></h3>
+<h4 id="1-vrf-rouge-routes-statiques"><strong>1. VRF Rouge (Routes statiques)</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les <strong>routes statiques</strong> sont utilisées pour connecter les CE aux PE dans la VRF <code>RED</code>. Cela permet aux CE de communiquer avec le reste du VPN.</p>
+<p><strong>Commande :</strong>
+- <strong>Sur CE1 et CE4</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>ip<span class="w"> </span>route<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>&lt;adresse_IP_PE&gt;
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>end
+</span></code></pre></div></p>
+<ul>
+<li><strong>Sur PE1 et PE3</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>ip<span class="w"> </span>route<span class="w"> </span>vrf<span class="w"> </span>RED<span class="w"> </span>&lt;réseau_CE&gt;<span class="w"> </span>&lt;masque&gt;<span class="w"> </span>&lt;next-hop&gt;
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>!
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>router<span class="w"> </span>bgp<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w"> </span>address-family<span class="w"> </span>ipv4<span class="w"> </span>vrf<span class="w"> </span>RED
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span>redistribute<span class="w"> </span>static
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>end
+</span></code></pre></div></li>
+</ul>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ping<span class="w"> </span>vrf<span class="w"> </span>RED<span class="w"> </span>&lt;adresse_IP_PC4&gt;
+</span></code></pre></div>
+- <strong>Que faire si le ping échoue ?</strong>
+  - Vérifiez les routes statiques avec <code>show ip route vrf RED</code>.
+  - Assurez-vous que les interfaces sont dans la bonne VRF.</p>
+<hr />
+<h4 id="2-vrf-verte-ebgp"><strong>2. VRF Verte (eBGP)</strong></h4>
+<p><strong>Pourquoi ?</strong>
+<strong>eBGP</strong> est utilisé pour échanger des routes entre les PE et les CE dans la VRF <code>GREEN</code>. Cela permet une <strong>scalabilité</strong> et une <strong>flexibilité</strong> accrues.</p>
+<p><strong>Commande :</strong>
+- <strong>Sur PE1, PE2 et PE3</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>router<span class="w"> </span>bgp<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w"> </span>!
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w"> </span>address-family<span class="w"> </span>ipv4<span class="w"> </span>vrf<span class="w"> </span>GREEN
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span>neighbor<span class="w"> </span>&lt;adresse_IP_CE&gt;<span class="w"> </span>remote-as<span class="w"> </span>&lt;AS_CE&gt;
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span>neighbor<span class="w"> </span>&lt;adresse_IP_CE&gt;<span class="w"> </span>activate
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>end
+</span></code></pre></div></p>
+<ul>
+<li><strong>Sur CE2, CE3 et CE5</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>router<span class="w"> </span>bgp<span class="w"> </span>&lt;AS_CE&gt;
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w"> </span>neighbor<span class="w"> </span>&lt;adresse_IP_PE&gt;<span class="w"> </span>remote-as<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w"> </span>!
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w"> </span>address-family<span class="w"> </span>ipv4
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span>neighbor<span class="w"> </span>&lt;adresse_IP_PE&gt;<span class="w"> </span>activate
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">  </span>redistribute<span class="w"> </span>connected
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>end
+</span></code></pre></div></li>
+</ul>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>show<span class="w"> </span>bgp<span class="w"> </span>vpnv4<span class="w"> </span>unicast<span class="w"> </span>vrf<span class="w"> </span>GREEN<span class="w"> </span>summary
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> La session BGP doit être <code>Established</code>.</p>
+<hr />
+<h2 id="4-service-internet-pour-le-vpn-mpls-rouge"><strong>4. Service Internet pour le VPN MPLS « Rouge »</strong></h2>
+<h3 id="41-pourquoi-un-multi-service"><strong>4.1. Pourquoi un multi-service ?</strong></h3>
+<p>Le <strong>multi-service</strong> permet de fournir <strong>plusieurs services</strong> (VPN MPLS, Internet) sur un même lien physique en utilisant des <strong>VLAN</strong>. Cela optimise l’utilisation des ressources.</p>
+<hr />
+<h3 id="42-configuration-du-multi-service"><strong>4.2. Configuration du multi-service</strong></h3>
+<h4 id="1-creer-des-sous-interfaces-vlan"><strong>1. Créer des sous-interfaces VLAN</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les <strong>sous-interfaces VLAN</strong> permettent de séparer logiquement le trafic VPN et Internet sur un même lien physique.</p>
+<p><strong>Commande :</strong>
+- <strong>Sur PE1</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>interface<span class="w"> </span>GigabitEthernet0/1.100
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w"> </span>encapsulation<span class="w"> </span>dot1Q<span class="w"> </span><span class="m">100</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w"> </span>ip<span class="w"> </span>vrf<span class="w"> </span>forwarding<span class="w"> </span>RED
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>&lt;adresse_IP&gt;<span class="w"> </span>&lt;masque&gt;
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w"> </span>no<span class="w"> </span>shutdown
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="nb">exit</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>!
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>interface<span class="w"> </span>GigabitEthernet0/1.200
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w"> </span>encapsulation<span class="w"> </span>dot1Q<span class="w"> </span><span class="m">200</span>
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span><span class="m">198</span>.51.100.32<span class="w"> </span><span class="m">255</span>.255.255.254
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w"> </span>no<span class="w"> </span>shutdown
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="nb">exit</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>end
+</span></code></pre></div></p>
+<ul>
+<li><strong>Sur CE1</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>interface<span class="w"> </span>GigabitEthernet0/1.100
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w"> </span>encapsulation<span class="w"> </span>dot1Q<span class="w"> </span><span class="m">100</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span>&lt;adresse_IP&gt;<span class="w"> </span>&lt;masque&gt;
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w"> </span>no<span class="w"> </span>shutdown
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nb">exit</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>!
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>interface<span class="w"> </span>GigabitEthernet0/1.200
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w"> </span>encapsulation<span class="w"> </span>dot1Q<span class="w"> </span><span class="m">200</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w"> </span>ip<span class="w"> </span>address<span class="w"> </span><span class="m">198</span>.51.100.33<span class="w"> </span><span class="m">255</span>.255.255.254
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w"> </span>no<span class="w"> </span>shutdown
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="nb">exit</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>end
+</span></code></pre></div></li>
+</ul>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>show<span class="w"> </span>ip<span class="w"> </span>interface<span class="w"> </span>brief
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> Les sous-interfaces doivent être <code>up/up</code>.</p>
+<hr />
+<h3 id="43-reconfiguration-du-routage"><strong>4.3. Reconfiguration du routage</strong></h3>
+<p><strong>Pourquoi ?</strong>
+Les routes doivent être mises à jour pour utiliser les nouvelles sous-interfaces.</p>
+<p><strong>Commande :</strong>
+- <strong>Sur CE1</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>ip<span class="w"> </span>route<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">198</span>.51.100.32
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>ip<span class="w"> </span>route<span class="w"> </span>&lt;réseau_VPN&gt;<span class="w"> </span>&lt;masque&gt;<span class="w"> </span>GigabitEthernet0/1.100
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>end
+</span></code></pre></div></p>
+<ul>
+<li><strong>Sur PE1</strong> :
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>ip<span class="w"> </span>route<span class="w"> </span>vrf<span class="w"> </span>RED<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>&lt;adresse_IP_CE1_VLAN100&gt;
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>!
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>router<span class="w"> </span>bgp<span class="w"> </span>&lt;AS&gt;
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w"> </span>address-family<span class="w"> </span>ipv4<span class="w"> </span>vrf<span class="w"> </span>RED
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">  </span>default-information<span class="w"> </span>originate
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w"> </span>exit-address-family
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>end
+</span></code></pre></div></li>
+</ul>
+<p><strong>Explication :</strong>
+- <strong><code>default-information originate</code></strong> : Propage une route par défaut dans la VRF <code>RED</code> pour permettre l’accès à Internet.</p>
+<hr />
+<h3 id="44-activation-du-nat-sur-ce1"><strong>4.4. Activation du NAT sur CE1</strong></h3>
+<p><strong>Pourquoi ?</strong>
+Le <strong>NAT</strong> permet aux hôtes du VPN d’accéder à Internet en traduisant leurs adresses privées en une adresse publique.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>access-list<span class="w"> </span><span class="m">100</span><span class="w"> </span>permit<span class="w"> </span>ip<span class="w"> </span>&lt;réseau_LAN_PC1&gt;<span class="w"> </span>any
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>access-list<span class="w"> </span><span class="m">100</span><span class="w"> </span>permit<span class="w"> </span>ip<span class="w"> </span>&lt;réseau_VPN&gt;<span class="w"> </span>any
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>!
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>ip<span class="w"> </span>nat<span class="w"> </span>inside<span class="w"> </span><span class="nb">source</span><span class="w"> </span>list<span class="w"> </span><span class="m">100</span><span class="w"> </span>interface<span class="w"> </span>GigabitEthernet0/1.200<span class="w"> </span>overload
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>!
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>interface<span class="w"> </span>GigabitEthernet0/0
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w"> </span>ip<span class="w"> </span>nat<span class="w"> </span>inside
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="nb">exit</span>
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>!
+</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>interface<span class="w"> </span>GigabitEthernet0/1.100
+</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="w"> </span>ip<span class="w"> </span>nat<span class="w"> </span>inside
+</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="nb">exit</span>
+</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>!
+</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>interface<span class="w"> </span>GigabitEthernet0/1.200
+</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w"> </span>ip<span class="w"> </span>nat<span class="w"> </span>outside
+</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="nb">exit</span>
+</span><span id="__span-26-18"><a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>end
+</span></code></pre></div></p>
+<p><strong>Test :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ping<span class="w"> </span><span class="m">8</span>.8.8.8
+</span></code></pre></div>
+- <strong>Que faire si le ping échoue ?</strong>
+  - Vérifiez les règles NAT avec <code>show ip nat translations</code>.
+  - Assurez-vous que la route par défaut est correcte.</p>
+<hr />
+<h2 id="5-service-l2vpn-point-a-point"><strong>5. Service L2VPN Point à Point</strong></h2>
+<h3 id="51-pourquoi-un-l2vpn"><strong>5.1. Pourquoi un L2VPN ?</strong></h3>
+<p>Un <strong>L2VPN</strong> permet d’étendre un réseau <strong>Ethernet</strong> (couche 2) à travers un réseau MPLS. Cela permet de connecter des sites distants comme s’ils étaient sur le même réseau local.</p>
+<hr />
+<h3 id="52-configuration-du-l2vpn"><strong>5.2. Configuration du L2VPN</strong></h3>
+<h4 id="1-activer-les-ports-eth03"><strong>1. Activer les ports eth0/3</strong></h4>
+<p><strong>Pourquoi ?</strong>
+Les ports doivent être activés pour établir la connexion L2VPN.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>interface<span class="w"> </span>GigabitEthernet0/3
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w"> </span>no<span class="w"> </span>shutdown
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="nb">exit</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>end
+</span></code></pre></div></p>
+<hr />
+<h4 id="2-configurer-le-service-l2vpn"><strong>2. Configurer le service L2VPN</strong></h4>
+<p><strong>Pourquoi ?</strong>
+La commande <code>xconnect</code> établit un <strong>circuit virtuel</strong> (VC) entre deux PE pour transporter le trafic de couche 2.</p>
+<p><strong>Commande :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>configure<span class="w"> </span>terminal
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>interface<span class="w"> </span>GigabitEthernet0/3
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w"> </span>xconnect<span class="w"> </span>&lt;adresse_IP_loopback_PE_voisin&gt;<span class="w"> </span><span class="m">1</span><span class="w"> </span>encapsulation<span class="w"> </span>mpls
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nb">exit</span>
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>end
+</span></code></pre></div></p>
+<p><strong>Vérification :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>show<span class="w"> </span>mpls<span class="w"> </span>l2transport<span class="w"> </span>vc
+</span></code></pre></div>
+- <strong>Que vérifier ?</strong> Le VC doit être <code>up</code>.</p>
+<p><strong>Test :</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>ping<span class="w"> </span>&lt;adresse_IP_SRV2&gt;
+</span></code></pre></div></p>
+<hr />
+<h2 id="6-commandes-de-debogage-utiles"><strong>6. Commandes de Débogage Utiles</strong></h2>
+<h3 id="61-debogage-ldp-et-mpls"><strong>6.1. Débogage LDP et MPLS</strong></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>debug<span class="w"> </span>mpls<span class="w"> </span>ldp<span class="w"> </span>all
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>debug<span class="w"> </span>mpls<span class="w"> </span>packet
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>show<span class="w"> </span>mpls<span class="w"> </span>ldp<span class="w"> </span>bindings
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>show<span class="w"> </span>mpls<span class="w"> </span>forwarding-table<span class="w"> </span>detail
+</span></code></pre></div>
+<h3 id="62-debogage-bgp-et-vrf"><strong>6.2. Débogage BGP et VRF</strong></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>debug<span class="w"> </span>ip<span class="w"> </span>bgp
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>show<span class="w"> </span>ip<span class="w"> </span>bgp<span class="w"> </span>neighbors
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>show<span class="w"> </span>ip<span class="w"> </span>route<span class="w"> </span>vrf<span class="w"> </span>RED
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>show<span class="w"> </span>bgp<span class="w"> </span>vpnv4<span class="w"> </span>unicast<span class="w"> </span>vrf<span class="w"> </span>GREEN
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copié dans le presse-papier","clipboard.copy":"Copier dans le presse-papier","search.result.more.one":"1 de plus sur cette page","search.result.more.other":"# de plus sur cette page","search.result.none":"Aucun document trouvé","search.result.one":"1 document trouvé","search.result.other":"# documents trouvés","search.result.placeholder":"Taper pour démarrer la recherche","search.result.term.missing":"Non trouvé","select.version":"Sélectionner la version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.00c35305.min.js"></script>
+      
+    
+  </body>
+</html>
