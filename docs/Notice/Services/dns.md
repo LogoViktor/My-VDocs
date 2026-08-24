@@ -1,3 +1,6 @@
+---
+title: "Bind9"
+---
 # 🌐 Serveur DNS (Bind9) sous Debian
 
 Le service DNS (*Domain Name System*) est indispensable : il permet de traduire les noms de domaine compréhensibles par l'humain (ex: `www.mondomaine.local`) en adresses IP compréhensibles par les machines (ex: `192.168.1.20`). 

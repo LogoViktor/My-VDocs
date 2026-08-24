@@ -1,3 +1,6 @@
+---
+title: "pfSense"
+---
 # 🛡️ Guide de Base : Pare-feu pfSense
 
 pfSense est une solution open-source de pare-feu et de routage basée sur FreeBSD, très largement utilisée en entreprise et dans les environnements réseaux/systèmes.

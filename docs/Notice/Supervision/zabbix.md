@@ -1,3 +1,6 @@
+---
+title: "Zabbix"
+---
 # 📊 Supervision avec Zabbix (Agent)
 
 Zabbix est une solution de supervision Open Source très puissante pour surveiller la disponibilité et les performances de vos infrastructures réseaux, serveurs et applications.
