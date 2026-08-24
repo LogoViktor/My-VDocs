@@ -160,11 +160,3 @@ Sur le client, redémarrez le service réseau pour renouveler le bail DHCP :
 sudo systemctl restart networking
 
 ```
-
----
-
-## **📥 Téléchargement**
-
-Vous pouvez télécharger la version complète de cette notice au format PDF ci-dessous :
-
-[📥 Télécharger la notice DHCP (PDF)](docs/pdf/Notice-DHCP.pdf)
