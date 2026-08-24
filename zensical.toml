@@ -53,7 +53,7 @@ features = [
 ]
 
 # ----------------------------------------------------------------------------
-# Navigation du site (Noms propres et épurés)
+# Navigation du site (Noms propres et épurés pour tout le monde)
 # ----------------------------------------------------------------------------
 nav = [
     { "Accueil" = "index.md" },
@@ -62,7 +62,7 @@ nav = [
             { "Installation et configuration de base" = "Notice/DHCP/DHCP_base.md" },
             { "Configuration VLAN" = "Notice/DHCP/DHCP_vlan.md" },
         ]},
-        { "DNS" = [
+        { "Services" = [
             { "Bind9" = "Notice/Services/dns.md" },
         ]},
         { "OSPF" = [
@@ -79,11 +79,13 @@ nav = [
         ]},
         { "Apache" = "Notice/apache.md" },
         { "Proxy Squid" = "Notice/proxysquid.md" },
-        { "Supervision & Sécurité" = [
+        { "Supervision" = [
             { "Zabbix" = "Notice/Supervision/zabbix.md" },
+        ]},
+        { "Securite" = [
             { "pfSense" = "Notice/Securite/pfsense.md" },
         ]},
-        { "Cloud & Conteneurs" = [
+        { "Cloud" = [
             { "Docker" = "Notice/Cloud/docker.md" },
         ]},
         { "Active Directory" = [
