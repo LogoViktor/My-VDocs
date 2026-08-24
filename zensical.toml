@@ -8,7 +8,7 @@ site_name = "My VDocs"
 site_description = "Documentation technique — DHCP, NFS, AD, Cisco, et plus"
 site_author = "Victor P."
 copyright = """
-Copyright &copy; 2026 <a href="https://github.LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
 """
 
 # ----------------------------------------------------------------------------
@@ -53,7 +53,7 @@ features = [
 ]
 
 # ----------------------------------------------------------------------------
-# Navigation du site (Mise à jour avec les nouveaux modules)
+# Navigation du site (Noms propres et épurés)
 # ----------------------------------------------------------------------------
 nav = [
     { "Accueil" = "index.md" },
@@ -63,7 +63,7 @@ nav = [
             { "Configuration VLAN" = "Notice/DHCP/DHCP_vlan.md" },
         ]},
         { "DNS" = [
-            { "Serveur DNS (Bind9)" = "Notice/Services/dns.md" },
+            { "Bind9" = "Notice/Services/dns.md" },
         ]},
         { "OSPF" = [
             { "OSPF" = "Notice/OSPF/ospf.md" },
@@ -80,11 +80,11 @@ nav = [
         { "Apache" = "Notice/apache.md" },
         { "Proxy Squid" = "Notice/proxysquid.md" },
         { "Supervision & Sécurité" = [
-            { "Zabbix (Supervision)" = "Notice/Supervision/zabbix.md" },
-            { "pfSense (Pare-feu)" = "Notice/Securite/pfsense.md" },
+            { "Zabbix" = "Notice/Supervision/zabbix.md" },
+            { "pfSense" = "Notice/Securite/pfsense.md" },
         ]},
         { "Cloud & Conteneurs" = [
-            { "Docker (Bases)" = "Notice/Cloud/docker.md" },
+            { "Docker" = "Notice/Cloud/docker.md" },
         ]},
         { "Active Directory" = [
             { "Installation et configuration de base" = "Notice/Active Directory/AD_base.md" },
@@ -96,7 +96,7 @@ nav = [
         { "Commandes Switch/Routeur Cisco" = "Guide/commande_de_base_cisco.md" },
         { "Commandes Switch Alcatel" = "Guide/commandes_alcatel.md" },
         { "Git / Github" = "Guide/git_github.md" },
-        { "Ansible (Automatisation)" = "Guide/ansible.md" },
+        { "Ansible" = "Guide/ansible.md" },
     ]},
 ]
 
@@ -109,24 +109,13 @@ enabled = true
 # ----------------------------------------------------------------------------
 # Extensions Markdown (Configuration PyMdown)
 # ----------------------------------------------------------------------------
-
-# 1. Configuration du surlignage (Highlight)
 [project.markdown_extensions.pymdownx.highlight]
 anchor_linenums = true
 line_spans = "__span"
 pygments_lang_class = true
 
-# 2. Surlignage en ligne
 [project.markdown_extensions.pymdownx.inlinehilite]
-
-# 3. Inclusion de fichiers externes (Snippets)
 [project.markdown_extensions.pymdownx.snippets]
-
-# 4. SuperFences (Essentiel pour les blocs de code complexes et bouton copie)
 [project.markdown_extensions.pymdownx.superfences]
-
-# 5. Admonition (C'est ce qui manquait pour afficher les blocs Info/Warning)
 [project.markdown_extensions.admonition]
-
-# 6. Details (Nécessaire pour les blocs qui se replient)
 [project.markdown_extensions.pymdownx.details]
