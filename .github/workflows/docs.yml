@@ -1,13 +1,16 @@
 name: Documentation
+
 on:
   push:
     branches:
       - master
       - main
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 jobs:
   deploy:
     environment:
@@ -15,15 +18,45 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/configure-pages@v5
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install zensical
-      - run: zensical build --clean
-      - uses: actions/upload-pages-artifact@v4
+
+      - name: Install Zensical
+        run: pip install zensical
+
+      - name: Build Zensical site
+        run: zensical build --clean
+
+      # ---------------------------------------------------------
+      # NOUVELLE ÉTAPE : DÉPLOIEMENT CHEZ OVH (SFTP)
+      # ---------------------------------------------------------
+      - name: Deploy to OVH via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 22
+          local_path: './site/*'
+          remote_path: '/www'
+          sftp_only: true
+
+      # ---------------------------------------------------------
+      # DÉPLOIEMENT GITHUB PAGES (Conservé de votre ancien code)
+      # ---------------------------------------------------------
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+
+      - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v4
