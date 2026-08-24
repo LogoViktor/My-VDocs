@@ -8,7 +8,7 @@ site_name = "My VDocs"
 site_description = "Documentation technique — DHCP, NFS, AD, Cisco, et plus"
 site_author = "Victor P."
 copyright = """
-Copyright &copy; 2026 <a href="https://github.com/LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
+Copyright &copy; 2026 <a href="https://github.LogoViktor" target="_blank" rel="noopener">LogoViktor</a>
 """
 
 # ----------------------------------------------------------------------------
@@ -53,7 +53,7 @@ features = [
 ]
 
 # ----------------------------------------------------------------------------
-# Navigation du site
+# Navigation du site (Mise à jour avec les nouveaux modules)
 # ----------------------------------------------------------------------------
 nav = [
     { "Accueil" = "index.md" },
@@ -61,6 +61,9 @@ nav = [
         { "DHCP" = [
             { "Installation et configuration de base" = "Notice/DHCP/DHCP_base.md" },
             { "Configuration VLAN" = "Notice/DHCP/DHCP_vlan.md" },
+        ]},
+        { "DNS" = [
+            { "Serveur DNS (Bind9)" = "Notice/Services/dns.md" },
         ]},
         { "OSPF" = [
             { "OSPF" = "Notice/OSPF/ospf.md" },
@@ -76,6 +79,13 @@ nav = [
         ]},
         { "Apache" = "Notice/apache.md" },
         { "Proxy Squid" = "Notice/proxysquid.md" },
+        { "Supervision & Sécurité" = [
+            { "Zabbix (Supervision)" = "Notice/Supervision/zabbix.md" },
+            { "pfSense (Pare-feu)" = "Notice/Securite/pfsense.md" },
+        ]},
+        { "Cloud & Conteneurs" = [
+            { "Docker (Bases)" = "Notice/Cloud/docker.md" },
+        ]},
         { "Active Directory" = [
             { "Installation et configuration de base" = "Notice/Active Directory/AD_base.md" },
             { "Utilisateurs et Groupes" = "Notice/Active Directory/AD_users.md" },
@@ -86,6 +96,7 @@ nav = [
         { "Commandes Switch/Routeur Cisco" = "Guide/commande_de_base_cisco.md" },
         { "Commandes Switch Alcatel" = "Guide/commandes_alcatel.md" },
         { "Git / Github" = "Guide/git_github.md" },
+        { "Ansible (Automatisation)" = "Guide/ansible.md" },
     ]},
 ]
 
