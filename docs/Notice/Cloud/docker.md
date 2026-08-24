@@ -1,4 +1,3 @@
-```markdown
 # 🐳 Guide Complet : Docker pour les Réseaux et Systèmes
 
 Ce guide présente les commandes essentielles et la configuration de base pour utiliser Docker dans le cadre de vos projets ou de votre administration système.

@@ -1,4 +1,3 @@
-```markdown
 # 🤖 Guide d'Automatisation : Ansible
 
 Ansible est un outil open-source de gestion de configuration et d'automatisation. Il permet de configurer des serveurs et des équipements de manière centralisée et sans agent à installer sur les machines cibles.
