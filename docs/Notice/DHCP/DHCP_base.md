@@ -167,4 +167,4 @@ sudo systemctl restart networking
 
 Vous pouvez télécharger la version complète de cette notice au format PDF ci-dessous :
 
-[📥 Télécharger la notice DHCP (PDF)](../pdf/Notice-DHCP.pdf)
+[📥 Télécharger la notice DHCP (PDF)](docs/pdf/Notice-DHCP.pdf)
