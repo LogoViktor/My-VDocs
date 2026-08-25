@@ -60,6 +60,7 @@ nav = [
     { "Notice" = [
         { "DHCP" = [
             { "Installation et configuration de base" = "Notice/DHCP/DHCP_base.md" },
+            { "Relais DHCP" = "Notice/DHCP/DHCP_Relais.md" },
             { "Configuration VLAN" = "Notice/DHCP/DHCP_vlan.md" },
         ]},
         { "Services" = [
@@ -99,6 +100,7 @@ nav = [
             { "WireGuard" = "Notice/VPN/wireguard.md" },
         ]},
         { "VLAN" = [
+            { "Routage Inter-VLAN" = "Notice/VLAN/routage_inter_vlan.md" },
             { "VLAN & Trunking 802.1Q" = "Notice/VLAN/vlan_trunking.md" },
         ]},
     ]},
