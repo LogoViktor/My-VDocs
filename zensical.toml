@@ -93,6 +93,14 @@ nav = [
             { "Utilisateurs et Groupes" = "Notice/Active Directory/AD_users.md" },
             { "GPO" = "Notice/Active Directory/AD_GPO.md" },
         ]},
+        { "VPN" = [
+            { "IPSec" = "Notice/VPN/ipsec.md" },
+            { "OpenVPN" = "Notice/VPN/openvpn.md" },
+            { "WireGuard" = "Notice/VPN/wireguard.md" },
+        ]},
+        { "VLAN" = [
+            { "VLAN & Trunking 802.1Q" = "Notice/VLAN/vlan_trunking.md" },
+        ]},
     ]},
     { "Guide" = [
         { "Commandes Switch/Routeur Cisco" = "Guide/commande_de_base_cisco.md" },
